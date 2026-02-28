@@ -1,0 +1,26 @@
+{{ attach_library('bootstrap_barrio/node') }}
+
+	<article class="h-entry">
+		<header>
+			<h2 class="p-name">
+				<a class="u-url" href="{{ url|render|replace({'/blog': 'https://paullieberman.org/blog'}) }}" rel="bookmark">{{ label }}</a>
+			</h2>
+			
+			{% if display_submitted %}
+				<div class="node__meta">
+				{% set author_url = url('<front>') %}			
+				{% block submitted %}
+				<em{{ author_attributes }}>
+					{% trans %}
+						Submitted by <a rel="author" class="p-author h-card" href="{{ author_url }}">{{ node.getOwner.getDisplayName }}</a> on {{ date }}
+					{% endtrans %}
+				</em>
+				{% endblock %}
+				{{ metadata }}
+				</div>
+			{% endif %}
+		</header>
+		<div class="e-content clearfix">
+			{{ content }}
+		</div>
+	</article>

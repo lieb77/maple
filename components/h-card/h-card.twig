@@ -1,0 +1,23 @@
+{# components/hcard #}
+
+{# Only display the h-card on the home and about page #}
+{% set is_home = (is_front) or (url('<current>') == url('<front>')) %}
+{% set is_about = (path('<current>') == '/about') %}
+
+{% if is_home or is_about %}
+
+	<div class="h-card hidden">
+		<span class="p-name">Paul Lieberman</span>
+		<span class="p-name p-nickname">lieb</span>		
+		<img class="u-photo" src="https://paullieberman.org/sites/default/files/head6.png.webp" alt="Head shot" width="77" height="100"> 
+		<span class="p-note">Ride Bikes, Play Music, Grow Gardens, Build Websites</span>
+		<a class="u-url" rel="me" href="https://paullieberman.org">Website</a>
+		<a class="u-email" rel="me" href="mailto:lieb@paullieberman.org">email</a>	
+		<a class="u-url" rel="me" href="https://bsky.app/profile/paullieberman.org">Bluesky</a>
+		<a class="u-url" rel="me" href="https://drupal.org/u/lieb">Drupal</a>
+		<a class="u-url" rel="me" href="https://github.com/lieb77">>GitHub</span></a>
+		<a class="u-url" rel="me" href="https://www.facebook.com/lieb77">Facebook</a>
+	</div>
+	
+{% endif %}	
+

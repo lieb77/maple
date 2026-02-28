@@ -1,0 +1,54 @@
+/**
+ * Adaptive Color Palette using modern CSS light-dark()
+ */
+
+:root {
+	color-scheme: light dark;
+	
+	--brand-blue: #0056b3;
+	--brand-blue-light: #337ab7;
+	--brand-blue-dark: #003d80;
+
+	/* Site Base */
+	--site-bg: light-dark(#ffffff, #121212);
+	--site-text: light-dark(#212529, #f8f9fa);
+	--card-bg: light-dark(#f8f9fa, #1e1e1e);
+	--border-color: light-dark(#dee2e6, #333333);
+
+	/* Content Differentiator */
+	/* Light: A very soft cool gray vs pure white */
+	/* Dark: A "carbon" gray (#1e1e1e) vs deep black (#121212) */
+	--content-bg: light-dark(#f9f9fb, #1e1e1e);
+	--content-text: light-dark(#1a1d21, #ffffff);
+	
+	/* Optional: A subtle border for the content area */
+	--content-border: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.05));
+	
+
+	/* Navbar colors - no light-dark */
+	--nav-text: #f5f5f5;
+	--nav-bg: #234e70;
+  	--nav-active-text: #ffffff;
+  	--nav-active-bg: #337ab7;
+  	--nav-hover-text: #f5f5f5;
+	--nav-hover-bg: #337ab7;
+
+	/*  Bridge to Bootstrap variables */
+	--bs-body-bg: var(--site-bg);
+	--bs-body-color: var(--site-text);
+	--bs-primary: light-dark(var(--brand-blue), var(--brand-blue-light));
+	--bs-border-color: var(--border-color);
+
+
+}
+
+/* 5. Force a mode via data-attribute (for the Toggle Button) */
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
+
+/* Global Styles */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}

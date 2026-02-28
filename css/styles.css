@@ -1,0 +1,34 @@
+/* styles.css */
+
+.path-frontpage .page-title {
+	display: none;
+}
+
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.main-content {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  border: 1px solid var(--content-border);
+  border-radius: 8px; /* Optional: rounds the "content platform" */
+  padding: 2rem;
+  box-shadow: light-dark(0 10px 30px rgba(0,0,0,0.05), 0 0 0 1px rgba(255,255,255,0.03));
+}
+
+.reading-focus {
+  /* Set a comfortable max-width for long-form reading */
+  max-width: 85ch; 
+  /* Center the column so the "void" is balanced on both sides */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure headings and lists inside follow the same width */
+.reading-focus > * {
+  max-width: 100%;
+}

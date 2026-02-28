@@ -1,0 +1,39 @@
+{#
+/**
+* @file
+* Template for photo-card component.
+*/
+#}
+{# sdc/photo-card/photo-card.twig #}
+
+{# photo-card.html.twig #}
+<div class="photo-card">
+  {# The Controller (Hidden) #}
+  <input type="checkbox" id="map-toggle-{{ data.id }}" class="map-toggle-checkbox" hidden>
+
+  {# The Image Box #}
+  <div class="photo-image-container">
+    
+    {# Background Blur Glow #}
+    <div class="photo-bg-blur" style="background-image: url('{{ data.uri }}');"></div>
+
+    {# The Actual Centered Photo #}
+    <div class="photo-main">
+       <img class="u-photo" src="{{ data.uri }}" alt="{{ data.alt }}" />
+    </div>
+
+    {# The Toggle Button #}
+    <label for="map-toggle-{{ data.id }}" class="map-toggle-btn" aria-label="Toggle map">
+      <span class="icon">📍</span>
+    </label>
+
+    {# The Overlay #}
+    <div class="photo-card__overlay">
+      <div class="overlay-content">		
+        <img src="{{ data.map }}" alt="Location map" class="mini-map" />
+        <p class="location-text">{{ data.loc }}</p>
+        <p class="location-text">{{ data.tak|date("M d, Y") }}</p>        
+      </div>
+    </div>
+  </div>
+</div>

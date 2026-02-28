@@ -1,0 +1,24 @@
+.site-branding {
+    /* Use the variable passed from Twig, or fall back to a theme default */
+    background-image: var(--banner-img);
+    background-size: cover;
+    background-position: center;
+    color: light-dark(#ffffff, #f8f9fa); /* Contrast against likely banner images */
+    min-height: 200px;
+    margin-bottom: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+
+.site-name a {
+    font-size: 3rem ;
+    font-weight: 700;
+    font-family: cursive;
+    color: #fff;
+    text-decoration: none;
+}
+

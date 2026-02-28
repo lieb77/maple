@@ -1,0 +1,13 @@
+{#
+  We use the style attribute for the background-image because it's dynamic data,
+  but we'll use a CSS variable to make it cleaner.
+#}
+
+
+<section {{ attributes.addClass('site-branding').setAttribute('style', '--banner-img: url(' ~ banner_url ~ ');') }}>
+  <div class="header-container">
+
+  {{ header }}
+
+  </div>
+</section>

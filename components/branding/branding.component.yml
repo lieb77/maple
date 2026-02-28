@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+
+name: Site Branding
+props:
+  type: object
+  properties:
+    site_logo:
+      type: string
+      title: Logo URL
+    site_name:
+      type: string
+      title: Site Name
+    site_slogan:
+      type: string
+      title: Slogan
+    banner_url:
+      type: string
+      title: Banner Background Image

@@ -1,0 +1,138 @@
+[data-component-id="spruce:bike-card"] {
+	
+}	
+	
+
+.bike-card{
+	margin-bottom:1.5rem;	
+	position:relative;	
+	width:100%;
+}
+
+.bike-card .map-toggle-checkbox {
+	display:none;
+}
+
+.bike-card .map-toggle-checkbox:checked ~.bike-image-container .bike-main img {
+	filter:blur(10px) brightness(.6);
+}
+
+.bike-card .map-toggle-checkbox:checked ~.bike-image-container .bike-card__overlay{
+	opacity:1;	
+	pointer-events:auto;	
+	visibility:visible;
+}
+
+
+.bike-card .map-toggle-checkbox:checked~.bike-image-container .map-toggle-btn{
+	background:#ffeb3b;	
+	transform:scale(1.1);
+}
+
+
+.bike-card .bike-image-container{
+	aspect-ratio:4/3;	
+	background:#000;	
+	border-radius:8px;	
+	box-shadow:0 4px 10px rgba(0,0,0,.2);	
+	overflow:hidden;	
+	position:relative;	
+	width:100%;
+}
+
+.bike-card .bike-image-container .bike-bg-blur{
+	background-position:50%;	
+	background-size:cover;	
+	filter:blur(20px);	
+	inset:-15px;	
+	opacity:.5;	
+	position:absolute;	
+	z-index:1;
+}
+
+.bike-card .bike-image-container .bike-main{
+	align-items:center;	
+	display:flex;	
+	inset:0;	
+	justify-content:center;	
+	position:absolute;	
+	z-index:2;
+}
+
+.bike-card .bike-image-container .bike-main img{
+	height:auto;	
+	max-height:100%;	
+	max-width:100%;	
+	-o-object-fit:contain;	
+	object-fit:contain;	
+	transition:filter .3s ease;	
+	width:auto;
+}
+
+.bike-card .bike-image-container .bike-card__overlay{
+	background:rgba(0,0,0,.2);	
+	display:flex;	
+	inset:0;	
+	opacity:0;	
+	padding:15px;	
+	pointer-events:none;	
+	position:absolute;	
+	transition:all .3s ease;	
+	visibility:hidden;	
+	z-index:10;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.bike-card .bike-image-container .bike-card__overlay .overlay-content{
+	color: #fff;	
+	text-align: left;
+}
+
+.bike-card .bike-image-container .bike-card__overlay .overlay-content .mini-map{
+	border:2px solid #fff;	
+	border-radius:4px;	
+	margin-bottom:8px;
+}
+
+.bike-card .bike-image-container .bike-card__overlay .overlay-content .location-text{
+	font-size:.9rem;	
+	margin:0;	
+	text-shadow:0 2px 4px rgba(0,0,0,.8);
+}
+
+.bike-card .bike-image-container .map-toggle-btn{
+	align-items:center;	
+	background:#fff;	
+	border-radius:50%;	
+	box-shadow:0 2px 5px rgba(0,0,0,.3);	
+	cursor:pointer;	
+	display:flex;	
+	height:36px;	
+	justify-content:center;	
+	position:absolute;	
+	right:10px;	
+	top:10px;	
+	transition:all .2s ease;	
+	width:36px;	
+	z-index:20;
+}
+
+.bike-card .bike-image-container .map-toggle-btn:hover{
+	transform:scale(1.1);
+}
+
+.bike-card .bike-card__label{
+	padding:10px 0;
+}
+
+.bike-card .bike-card__label h3{
+	color:#333;	
+	font-size:1rem;	
+	margin:0;
+}
+
+
+
+

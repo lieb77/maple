@@ -1,0 +1,49 @@
+{#
+
+bike
+	id
+    title
+	make
+	model
+	year
+	from
+	text
+	uri
+#}
+{# sdc/bike-card/bike-card.twig #}
+
+{# bike-card.html.twig #}
+<div class="bike-card">
+    <h2><a href={{ url }}>{{ bike.title }}</a></h2>
+  {# 1. The Controller (Hidden) #}
+  <input type="checkbox" id="map-toggle-{{ bike.id }}" class="map-toggle-checkbox" hidden>
+
+  {# 2. The Image Box #}
+  <div class="bike-image-container">
+
+    {# Background Blur Glow #}
+    <div class="bike-bg-blur" style="background-image: url('{{ bike.uri }}');"></div>
+
+    {# The Actual Centered Photo #}
+    <div class="bike-main">
+       <img src="{{ bike.uri }}" alt="{{ bike.title }}" />
+    </div>
+
+    {# 3. The Toggle Button #}
+    <label for="map-toggle-{{ bike.id }}" class="map-toggle-btn" aria-label="Toggle map">
+      <span class="icon">🚲</span>
+    </label>
+
+    {# 4. The Overlay #}
+    <div class="bike-card__overlay">
+      <div class="overlay-content">		
+		<p>Make: {{ bike.make }}</p>
+		<p>Model: {{ bike.model }}</p>
+		<p>Year: {{ bike.year|date("Y") }}</p>
+		<p>Miles: {{ bike.miles }}</p>
+		<p>Purchased from: {{ bike.from }}</p>
+		<p>{{ bike.text }}</p>
+      </div>
+    </div>
+  </div>
+</div>

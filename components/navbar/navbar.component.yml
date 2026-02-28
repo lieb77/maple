@@ -1,0 +1,9 @@
+name: Global Navbar
+status: experimental
+slots:
+  brand:
+    title: Brand/Logo
+  menu:
+    title: Main Navigation
+  utility:
+    title: Secondary/Utility Menu

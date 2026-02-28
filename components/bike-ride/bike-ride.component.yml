@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: BikeRide
+status: experimental
+description: 'A theme override for a media item display in Drupal. This includes configurations for media type, published status, and view mode.'
+props:
+  type: object
+  properties:
+    node_type:
+      type: string
+      title: Node Type
+      description: 'The bundle classification of the media object. It is automatically generated and cleaned for class addition.'
+    is_published:
+      type: boolean
+      title: Published Status
+      description: 'A flag indicating whether the media is published or unpublished. It is used to add a class "media--unpublished" when unpublished.'
+    view_mode:
+      type: string
+      title: View Mode
+      description: 'The view mode classification that is cleansed for class addition.'
+slots:
+  content:
+    type: array
+    description: 'The rendered media item content.'

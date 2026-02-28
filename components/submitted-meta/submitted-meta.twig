@@ -1,0 +1,19 @@
+{% block submitted %}
+	<em>
+		{% trans %}
+			Submitted by <a 
+				rel="author" 
+				class="p-author h-card"
+				 href="{{ author_url }}"
+				> {{ author_name }}
+			</a> on	<span>
+				<time 
+					class="dt-published" 
+					datetime="{{ iso_datetime }}" 							
+					>
+					{{ long_date }}
+				</time>
+			</span>
+		{% endtrans %}
+	</em>
+{% endblock %}

@@ -1,0 +1,9 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: infinite-scroll
+status: experimental
+description: 'The infinite-scroll component'
+library:
+  dependencies:
+    - core/drupal
+    - core/htmx
+    - core/drupal.htmx

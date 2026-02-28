@@ -1,0 +1,144 @@
+/**
+ * Macro Layout: Responsive CSS Grid.
+ * Mobile-first approach: default is stacked.
+ */
+
+:root {
+	--sidebar-width: 3;
+	--grid-gutter: clamp(1rem, 2.5vw, 3rem);
+	--site-max-width: clamp(1320px, 90vw, 1800px);
+}
+
+.main-layout {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: var(--grid-gutter);
+	width: 100%;
+	max-width: var(--site-max-width);
+	margin: 0 auto;
+	padding: 0 calc(var(--grid-gutter) * 0.5);
+}
+
+/* --- 1. MOBILE DEFAULT (up to 767px) --- */
+.main-content,
+.sidebar-first,
+.sidebar-second {
+	grid-column: 1 / span 12;
+}
+
+.main-content {
+	margin: 1rem; /* Smaller margin on mobile */
+	padding: 1rem; /* Tight padding */
+	display: block; /* Usually stick to a simple stack on mobile */
+}
+
+
+/* --- 2. TABLET (768px to 991px) --- */
+@media (min-width: 768px) {
+	/* On tablets, let's keep it simple: 
+	Sidebar First (4 cols) | Content (8 cols)
+	Sidebar Second stacks below them. */
+	
+	.sidebar-first {
+		grid-column: span 4;
+		grid-row: 1;
+	}
+	
+	.main-layout:has(.sidebar-first) .main-content {
+		grid-column: 5 / span 8;
+	}
+	
+	.main-content {
+        margin: 1.5rem auto;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: subgrid; /* Inherits the 12-col grid */
+        gap: 1.5rem;
+    }
+
+    /* Make content children fill the 8 columns assigned to .main-content */
+    .main-content > * {
+        grid-column: 1 / -1;
+    }
+	
+	.grid-columns-2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* --- 3. DESKTOP (992px and up) --- */
+@media (min-width: 992px) {
+
+	/* Force all primary layout elements into the first row */
+	.sidebar-first,
+	.main-content,
+	.sidebar-second {
+		grid-row: 1; 
+	}
+	
+	
+	/* Reset Sidebar First to our configurable width */
+	.sidebar-first {
+		grid-column: span var(--sidebar-width);
+	}
+	
+	/* Logic: If only Sidebar First exists */
+	.main-layout:has(.sidebar-first) .main-content {
+		grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - var(--sidebar-width));
+	}
+	
+	/* Logic: If only Sidebar Second exists */
+	.main-layout:has(.sidebar-second) .main-content {
+		grid-column: 1 / span calc(12 - var(--sidebar-width));
+	}
+	
+	/* Logic: If BOTH exist (The 3-6-3 or 2-8-2 setup) */
+	.main-layout:has(.sidebar-first):has(.sidebar-second) .main-content {
+		grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - (var(--sidebar-width) * 2));
+	}
+	
+	.sidebar-second {
+		/* Ensure this starts at the far right regardless of content */
+		grid-column: calc(13 - var(--sidebar-width)) / span var(--sidebar-width);
+	}
+	
+	.main-content {
+        margin: 2rem auto;
+        padding: 3rem; 
+        display: grid;        
+        grid-template-columns: subgrid; 
+        gap: var(--grid-gutter, 2rem);
+        max-width: 1400px; 
+    }
+
+    /* Since .main-content is now a grid, its immediate children 
+       need to be told to span the whole width by default.
+    */
+    .main-content > * {
+        grid-column: 1 / -1;
+    }
+    
+	
+	/* Now for the magic: Specific layouts within your text */
+	.main-content .text-split {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--grid-gutter);
+	}
+  
+
+	/* Helper classes for the Body field */
+	.grid-columns-2 {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--grid-gutter);
+	}
+	
+	/* Helper classes for the Body field */
+	.grid-columns-3 {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--grid-gutter);
+	}
+
+}

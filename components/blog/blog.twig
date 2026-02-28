@@ -1,0 +1,53 @@
+{#    #}
+{% set author_url = url('<front>') %}
+{% set longDate = node.created.value|date('l, F j, Y - H:i') %}
+
+<article class="blog h-entry">
+	<header>
+		<h2 class="p-name">
+			<a class="u-url" href="{{ url|render|replace({'/blog': 'https://paullieberman.org/blog'}) }}" rel="bookmark">{{ label }}</a>
+		</h2>
+
+		<div class="node__meta">
+			{% include 'spruce:submitted-meta' with {
+			  author_name: node.getOwner.getDisplayName,
+			  author_url: url('<front>'),
+			  iso_datetime: iso_datetime,
+			  long_date: node.created.value|date('l, F j, Y - H:i')
+			} only %}			
+		</div>
+		
+	</header>
+
+	<div class="blog-body e-content">
+		{{ content.body }}
+	</div>
+
+	<div class="blog-tags">
+		<span>Tags: </span>
+		{% for key, tag in tags %}
+			<span>
+				<a class="p-category" href="/blog?field_tags_target_id={{ tag }}">
+					{{ content.field_tags[key]['#title'] }}
+				</a>
+			</span>
+		{% endfor %}
+
+		<div class="permalink">
+			<button
+				class="permalink__button u-url"
+				data-url="{{ url }}"
+				aria-label="Copy permalink to clipboard"
+			>
+				<span class="permalink__icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+				<span class="permalink__label">Permalink</span>
+
+				{# This is our 'Toast' element #}
+				<div class="permalink__toast">
+					Copied to clipboard! 🚀
+				</div>
+			</button>
+		</div>
+	</div>
+</article>
+

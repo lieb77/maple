@@ -1,0 +1,136 @@
+.bike-card {
+  position: relative;
+  width: 100%; // Respect the Views Grid column width
+  margin-bottom: 1.5rem;
+
+  // --- Logic: The Checkbox Hack ---
+  .map-toggle-checkbox {
+    display: none;
+
+    &:checked {
+      // Blur the main bike when map is on
+      ~ .bike-image-container .bike-main img {
+        filter: blur(10px) brightness(0.6);
+      }
+      // Show the overlay
+      ~ .bike-image-container .bike-card__overlay {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      // Highlight the pin button
+      ~ .bike-image-container .map-toggle-btn {
+        background: #ffeb3b;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // --- The Visual Container ---
+  .bike-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3; // This keeps your grid perfectly uniform
+    background: #000;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    // The blurred "Glow" behind the bike
+    .bike-bg-blur {
+      position: absolute;
+      inset: -15px; // Extra margin to hide unblurred edges
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px);
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    // The foreground image (Contain mode)
+    .bike-main {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain; // Never crops!
+        transition: filter 0.3s ease;
+      }
+    }
+
+    // The Overlay (Map & Location)
+    .bike-card__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.2); // Light tint to help text pop
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      
+      // Hidden state
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.3s ease;
+
+      .overlay-content {
+        text-align: center;
+        color: white;
+
+        .mini-map {
+          border: 2px solid white;
+          border-radius: 4px;
+          margin-bottom: 8px;
+        }
+
+        .location-text {
+          font-size: 0.9rem;
+          margin: 0;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+      }
+    }
+
+    // The Pin Button
+    .map-toggle-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 20;
+      background: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // Caption under the image
+  .bike-card__label {
+    padding: 10px 0;
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+  }
+}

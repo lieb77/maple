@@ -1,0 +1,42 @@
+[data-component-id="spruce:bike-ride"] {
+	
+}	
+	
+
+.bike-ride {
+	margin-bottom: 1.5rem;	
+	position: relative;	
+	width: 100%;
+	border: 1px solid #aaa;
+	border-radius: 8px;
+	padding: 1em;
+}
+
+.ride-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Creates two equal-width columns */
+  gap: 1em;
+}
+
+}
+
+.ride-stats {
+	max-width: 60%;
+}
+
+.ride-text {
+	margin-top: 1em;
+}
+
+.ride-photos {
+    padding-left: 1em;
+}
+
+.bike-ride p {
+	margin-bottom: 0 !important;
+
+.ride-label {
+	font-weight: bold;
+	display: inline-block;
+	min-width: 6rem;
+}

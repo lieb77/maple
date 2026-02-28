@@ -1,0 +1,28 @@
+{#
+ "id" => "8732"
+  "title" => "Southeast Odyssey 2024"
+  "date" => "2024-03-20"
+  "miles" => "1097"
+  "days" => "28"
+  "text" => "Florida to Mississippi"
+  "map" => "/sites/default/files/images/route_0.png"
+
+#}
+{# sdc/touur/tour.twig #}
+
+<div class="tour">
+    <div class="tour-body">
+        <div class="tour-data">
+            <h2><a href={{ url }}>{{ tour.title }}</a></h2>
+            <p><span class="tour-label">Start date:</span> {{ tour.date }} </p>
+            <p><span class="tour-label">Number of days:</span> {{ tour.days }} </p>
+            <p><span class="tour-label">Miles:</span> {{ tour.miles }} </p>
+            <p>{{ tour.text }} </p>
+        </div>
+        {% if tour.map %}
+            <div class="tour-map">
+                <img src={{ tour.map }} alt="Overview map" />
+            </div>
+        {% endif %}
+    </div>
+</div>

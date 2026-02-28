@@ -1,0 +1,28 @@
+{#
+/**
+* @file
+* Template for infinite-scroll component.
+*/
+#}
+{{ attach_library('core/htmx') }}
+<div class="infinite-scroll-component" id="infinite-wrapper-{{ id }}">
+  {# Initial content #}
+  <div class="infinite-content-batch">
+    {{ content }}
+  </div>
+  {% if next_url %}
+    {# The Trigger #}
+    <div class="infinite-scroll-trigger"
+         data-hx-get="{{ next_url }}"
+         data-hx-trigger="revealed"
+         {# Select the rows AND the next trigger from the response #}
+         data-hx-select=".view-content > *, .infinite-scroll-trigger"
+         data-hx-target="this"
+         data-hx-swap="outerHTML">
+      
+      <div class="loader-{{ id }} htmx-indicator" style="padding: 20px; text-align: center;">
+        <span>Loading more...</span>
+      </div>
+    </div>
+  {% endif %}
+</div>

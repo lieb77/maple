@@ -1,0 +1,13 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: H-Card
+description: A Microformats2 h-card component.
+props:
+  type: object
+  properties:
+    display_mode:
+      type: string
+      enum: [full, minimal]
+      default: full
+    name:
+      type: string
+      

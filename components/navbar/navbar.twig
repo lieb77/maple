@@ -1,0 +1,32 @@
+{# themes/custom/maple/components/navbar/navbar.twig #}
+<nav class="navbar navbar-expand-lg navbar-maple sticky-top">
+  <div class="container-fluid">
+  
+    {# Toggle for mobile #}
+     <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#maple-nav"
+            aria-controls="maple-nav"
+            aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="maple-nav">
+      {# 
+        Using d-flex and justify-content-between makes the 
+        first item go left and the second item go right.
+      #}
+      <div class="navbar-nav-container d-flex w-100 justify-content-between">
+        
+        <div class="main-menu-slot">
+          {{ menu }}
+        </div>
+
+        <div class="secondary-menu-slot">
+          {{ secondary }} 
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>

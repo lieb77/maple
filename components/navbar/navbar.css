@@ -1,0 +1,75 @@
+/* Navbar CSS */
+
+
+/* Ensure the container takes up the full width of the collapse */
+.navbar-nav-container {
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .navbar-nav-container {
+    flex-direction: row; /* Horizontal on desktop */
+    align-items: center;
+  }
+}
+
+/* Optional: Add a subtle separator or different style to the secondary menu 
+   to distinguish it from the main global navigation */
+.secondary-menu-slot .nav-link {
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+
+.navbar.navbar-maple {
+	background-color: var(--nav-bg);
+	color: var(--nav-text);
+	border-bottom: 1px solid var(--border-color);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	transition: all 0.3s ease;
+	padding: 0;
+  
+}
+
+.navbar-maple.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 500; 
+}
+
+body.toolbar-horizontal.toolbar-tray-open .navbar-maple.sticky-top {
+  top: 79px;
+}
+
+body.toolbar-horizontal .navbar-maple.sticky-top {
+  top: 39px;
+}
+
+
+.navbar-maple .nav-item {
+  color: var(--nav-text);
+}
+
+.navbar-maple .nav-item:hover,
+.navbar-maple .nav-item.active {
+    background-color: var(--nav-active-bg);
+}
+
+.navbar-maple .nav-item:hover .nav-link,
+.navbar-maple .nav-item.active .nav-link {
+    color: var(--nav-active-text);
+
+.navbar-toggler {
+    filter: invert(1) brightness(100%); /* Quick trick to turn black icons white */
+}
+
+/* Add a slightly transparent background when sticky for modern look */
+@supports (backdrop-filter: blur(10px)) {
+  .navbar-maple {
+    background-color: light-dark(rgba(255,255,255,0.8), rgba(18,18,18,0.8));
+    backdrop-filter: blur(10px);
+  }
+}

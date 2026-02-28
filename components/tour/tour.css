@@ -1,0 +1,29 @@
+[data-component-id="spruce:tour"] {
+	
+}	
+	
+
+.tour {
+	margin-bottom: 1.5rem;	
+	position: relative;	
+	width: 100%;
+	border: 1px solid #aaa;
+	border-radius: 8px;
+	padding: 1em;
+}
+
+.tour-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Creates two equal-width columns */
+  gap: 1em;
+}
+
+.tour-data p {
+    margin-bottom: 0;
+}
+
+.tour-label {
+    font-weight: bold;
+    min-width: 6rem;
+}
+

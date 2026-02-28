@@ -1,0 +1,44 @@
+{#
+    
+    
+#}
+
+<article class="h-entry bike-ride">
+    <h2 class="p-name u-url"><a href={{ url }}>{{ ride.title }}</a></h2>
+    <div class="ride-body">
+        <div class="ride-stats">
+			<p>
+				<span class="ride-label">Date:</span> 
+				<time class="dt-published" datetime="{{ ride.date|date('c') }}">
+					{{ ride.date|date("F d, Y") }}
+				</time>
+			</p>
+			<p>
+				<span class="ride-label">Miles:</span> 
+				<data class="p-distance" value="{{ ride.miles }}">
+					{{ ride.miles }}
+				</data>
+			</p>
+			<p>
+				<span class="ride-label">Bike:</span> 
+				<span class="p-equipment h-item">
+					<a class="u-url" href="https://paullieberman.org{{ ride.bike.path}}">
+						{{ ride.bike.name }}
+					</a>
+				</span>
+			</p>
+			{% if ride.buddies %}				
+				<p>
+					<span class="ride-label">Buddies:</span> 
+					{{ ride.buddies }}						
+				</p>
+			{% endif %}		
+			<div class="e-content ride-text">{{ content.body }}</div>
+		</div>
+		<div class="ride-photos">
+			{% for mid in ride.photos   %}
+				{{ drupal_entity('media', mid, "picture_place") }}
+			{% endfor %}
+		</div>
+    </div>
+</article>

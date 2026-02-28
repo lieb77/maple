@@ -1,0 +1,5 @@
+StaticMapLite or the MapQuest Static API. However, for a fully open-source approach, the Stadia Maps or Thunderforest APIs (which use OSM data) are popular.
+
+Geoapify key ey
+afb07405abd846fc93dd0767b28f18d3
+

@@ -1,0 +1,22 @@
+name: Maple
+type: theme
+base theme: false # Or 'stable9' if you want core's basic wrapper markup
+core_version_requirement: ^11
+libraries:
+  - maple/bootstrap
+  - maple/global-styling
+
+# Only keep the extends for things Bootstrap/SDC won't cover
+libraries-extend:
+  core/drupal.messages:
+    - maple/messages
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  breadcrumb: 'Breadcrumbs'
+  content: 'Main content' # Canvas will live here
+  sidebar_first: 'Left sidebar'
+  sidebar_second: 'Right sidebar'
+  footer: 'Footer'
