@@ -60,6 +60,13 @@
 
 
 <div class="site-wrapper">
+
+	{% if page.messages %}
+		{% include 'maple:debug-dock' with {
+			content: page.messages
+		} only %}
+	{% endif %}
+
   <header class="site-header" role="banner">
 	  {% include 'maple:branding' with {
 			banner_url: site_bg_url,

@@ -8,6 +8,13 @@
 	--brand-blue: #0056b3;
 	--brand-blue-light: #337ab7;
 	--brand-blue-dark: #003d80;
+	
+
+	/* Light Mode: Sophisticated Teal-Emerald (#059669) */
+    /* Dark Mode: Warm Harvest Gold (#ffca28) */
+    --maple-link: light-dark(#059669, #ffca28);
+    --maple-link-hover: light-dark(#047857, #ffd54f);
+
 
 	/* Site Base */
 	--site-bg: light-dark(#ffffff, #121212);
@@ -51,4 +58,33 @@ body {
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+a {
+    color: var(--maple-link);
+    text-decoration: underline; 
+	text-decoration-color: color-mix(in srgb, currentColor, transparent 60%);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--maple-link-hover);
+    text-decoration-color: currentColor;
+}
+
+a:focus {
+    color: var(--maple-link-hover);
+    text-decoration: none; /* Clean hover effect */
+}
+
+a:focus-visible {
+    outline: 2px solid var(--maple-link);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+/* Ensure Bootstrap's utility classes don't win by default */
+.link-primary {
+    color: var(--maple-link) !important;
 }

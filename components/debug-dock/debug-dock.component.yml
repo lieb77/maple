@@ -1,0 +1,8 @@
+name: Debug Dock
+status: experimental
+props:
+  type: object
+  properties:
+    content:
+      type: string
+      title: Message Content

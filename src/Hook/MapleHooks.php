@@ -49,7 +49,6 @@ class MapleHooks {
   #[Hook('preprocess_page')]
   public function preprocessPage(array &$variables): void {
 	$variables['site_bg_url'] = theme_get_setting("image_path");
-
   }
 
 	/**

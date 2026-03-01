@@ -1,0 +1,83 @@
+/**
+ * Maple SDC: Debug Dock
+ * Handles system messages and dev dumps (Kint/DPM).
+ */
+
+.debug-message-dock {
+    --debug-bg: light-dark(#f8f9fa, #1e1e1e);
+    --debug-border: light-dark(#dee2e6, #444);
+    --debug-error: #d9534f;
+    --debug-warning: #f0ad4e;
+    --debug-kint: #6f42c1;
+
+    background-color: var(--debug-bg);
+    border-bottom: 4px solid var(--brand-primary, #007bff);
+    position: relative;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 2000;
+}
+
+/* Status Indicator Logic via :has() */
+.debug-message-dock:has(.messages--error) {
+    border-bottom-color: var(--debug-error);
+}
+
+.debug-message-dock:has(.messages--warning) {
+    border-bottom-color: var(--debug-warning);
+}
+
+.debug-message-dock:has(.kint-rich),
+.debug-message-dock:has(.sf-dump) {
+    border-bottom-color: var(--debug-kint);
+}
+
+/* Controls Wrapper */
+.debug-dock-controls {
+    position: sticky;
+    top: 0.5rem;
+    right: 1rem;
+    z-index: 101; 
+    float: right;
+}
+
+/* Dismiss Button (Bootstrap Override) */
+#dismiss-debug.btn-close {
+    background-color: var(--debug-bg);
+    border: 1px solid light-dark(#ccc, #666);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    padding: 0.5rem;
+    cursor: pointer;
+    /* Direct filter for visibility in dark mode */
+    filter: light-dark(none, invert(1) brightness(2));
+}
+
+#dismiss-debug.btn-close:hover {
+    background-color: light-dark(#eee, #333);
+}
+
+/* Hard swap for the SVG icon in dark mode to ensure visibility */
+@media (prefers-color-scheme: dark) {
+    #dismiss-debug.btn-close {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
+    }
+}
+
+/* Ensure Dumps utilize full width and remain readable */
+.debug-message-dock .kint-rich,
+.debug-message-dock .sf-dump {
+    margin: 1rem 0 !important;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.debug-message-dock:not(:has(.messages, .kint-rich, .sf-dump)) {
+    display: none !important;
+}
+
+/* Also ensure that if the container-fluid is empty, we hide it */
+.debug-message-dock .container-fluid:empty {
+    display: none;
+}
