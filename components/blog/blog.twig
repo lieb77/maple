@@ -2,14 +2,16 @@
 {% set author_url = url('<front>') %}
 {% set longDate = node.created.value|date('l, F j, Y - H:i') %}
 
+{% set blog_url = url('<front>')|render ~ 'blog' %}
+
 <article class="blog h-entry">
 	<header>
 		<h2 class="p-name">
-			<a class="u-url" href="{{ url|render|replace({'/blog': 'https://paullieberman.org/blog'}) }}" rel="bookmark">{{ label }}</a>
+			<a class="u-url" href="{{ url|render|replace({'/blog': blog_url }) }}" rel="bookmark">{{ label }}</a>
 		</h2>
 
 		<div class="node__meta">
-			{% include 'spruce:submitted-meta' with {
+			{% include 'maple:submitted-meta' with {
 			  author_name: node.getOwner.getDisplayName,
 			  author_url: url('<front>'),
 			  iso_datetime: iso_datetime,

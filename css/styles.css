@@ -1,9 +1,59 @@
 /* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,600;0,700;1,600&display=swap');
 
-.path-frontpage .page-title {
-	display: none;
+
+:root {
+  /* The "System-Nature" Stack */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif; /* Good for long-form body text */ 
+  
+  /* Modular Scale Base */
+  --font-size-base: 1rem; /* Usually 16px */
+  --line-height-base: 1.6;
+  --body-letter-spacing: -0.011em;
+
+  --font-header: 'lora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --header-letter-spacing: -0.02em;
 }
 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+/*  margin-top: 2rem; */
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 80ch; 
+}
+
+h1 { font-size: 3.05rem; }
+h2 { font-size: 2.44rem; }
+h3 { font-size: 1.95rem; }
+h4 { font-size: 1.56rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.00rem; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--body-letter-spacing);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ }
+
+blockquote {
+  font-family: var(--font-header);
+  font-style: italic;
+  font-size: 1.25rem;
+  border-left: 4px solid var(--maple-link); /* Our Emerald green */
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  color: light-dark(#4a4a4a, #d1d1d1);
+  background: light-dark(#f9f9f9, #1a1a1a);
+}
 
 img {
 	max-width: 100%;
@@ -32,3 +82,4 @@ img {
 .reading-focus > * {
   max-width: 100%;
 }
+

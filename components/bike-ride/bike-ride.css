@@ -1,42 +1,46 @@
-[data-component-id="spruce:bike-ride"] {
-	
-}	
-	
+/* maple:bike-ride/bike-ride.css */
 
 .bike-ride {
-	margin-bottom: 1.5rem;	
-	position: relative;	
-	width: 100%;
-	border: 1px solid #aaa;
-	border-radius: 8px;
-	padding: 1em;
+  background-color: var(--maple-surface);
+  border: 1px solid var(--maple-border-subtle);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--maple-shadow-sm);
 }
 
 .ride-body {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Creates two equal-width columns */
-  gap: 1em;
+  grid-template-columns: repeat(12, 1fr); 
+  gap: var(--grid-gutter);
 }
 
-}
-
-.ride-stats {
-	max-width: 60%;
-}
-
-.ride-text {
-	margin-top: 1em;
-}
-
+/* Mobile: Stacked */
+.ride-stats,
 .ride-photos {
-    padding-left: 1em;
+  grid-column: span 12;
 }
 
-.bike-ride p {
-	margin-bottom: 0 !important;
+/* Desktop: 8/4 split */
+@media (min-width: 48rem) {
+  .ride-stats {
+    grid-column: span 8;
+  }
+  .ride-photos {
+    grid-column: span 4;
+  }
+}
 
 .ride-label {
-	font-weight: bold;
-	display: inline-block;
-	min-width: 6rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  min-width: 6rem;
+  flex-shrink: 0;
+  /* Inherits color and case from parent now */
+}
+
+.ride-stats p {
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: baseline;
 }

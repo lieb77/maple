@@ -5,6 +5,7 @@ core_version_requirement: ^11
 libraries:
   - maple/bootstrap
   - maple/global-styling
+  - maple/fontawesome_brands
 
 # Only keep the extends for things Bootstrap/SDC won't cover
 libraries-extend:

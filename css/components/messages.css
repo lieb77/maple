@@ -1,69 +1,47 @@
-/**
- * @file
- * Styles for system messages.
- */
+/* css/components/messages.css */
 
-.messages {
-  padding: 15px 20px 15px 35px; /* LTR */
-  word-wrap: break-word;
-  border: 1px solid;
-  border-width: 1px 1px 1px 0; /* LTR */
-  border-radius: 2px;
-  background: no-repeat 10px 17px; /* LTR */
-  overflow-wrap: break-word;
-}
-[dir="rtl"] .messages {
-  padding-right: 35px;
-  padding-left: 20px;
-  text-align: right;
-  border-width: 1px 0 1px 1px;
-  background-position: right 10px top 17px;
-}
-.messages + .messages {
-  margin-top: 1.538em;
-}
-.messages__list {
-  margin: 0;
+.messages-list {
+  margin: 1.5rem 0;
   padding: 0;
   list-style: none;
 }
-.messages__item + .messages__item {
-  margin-top: 0.769em;
+
+.messages {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background-color: var(--maple-surface);
+  border: 1px solid var(--maple-border-subtle);
+  /* The Maple Accent Bar */
+  border-left: 6px solid var(--maple-link); 
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
+
+/* Status: Use our brand Emerald/Gold */
 .messages--status {
-  color: #325e1c;
-  border-color: #c9e1bd #c9e1bd #c9e1bd transparent; /* LTR */
-  background-color: #f3faef;
-  background-image: url(../../images/icons/check.svg);
-  box-shadow: -8px 0 0 #77b259; /* LTR */
+  border-left-color: var(--maple-link);
 }
-[dir="rtl"] .messages--status {
-  margin-left: 0;
-  border-color: #c9e1bd transparent #c9e1bd #c9e1bd;
-  box-shadow: 8px 0 0 #77b259;
-}
+
+/* Warning: A warm amber that isn't too "loud" */
 .messages--warning {
-  color: #734c00;
-  border-color: #f4daa6 #f4daa6 #f4daa6 transparent; /* LTR */
-  background-color: #fdf8ed;
-  background-image: url(../../images/icons/warning.svg);
-  box-shadow: -8px 0 0 #e09600; /* LTR */
+  border-left-color: light-dark(#e09600, #ffca28);
 }
-[dir="rtl"] .messages--warning {
-  border-color: #f4daa6 transparent #f4daa6 #f4daa6;
-  box-shadow: 8px 0 0 #e09600;
-}
+
+/* Error: A clean, crisp red */
 .messages--error {
-  color: #a51b00;
-  border-color: #f9c9bf #f9c9bf #f9c9bf transparent; /* LTR */
-  background-color: #fcf4f2;
-  background-image: url(../../images/icons/error.svg);
-  box-shadow: -8px 0 0 #e62600; /* LTR */
+  border-left-color: light-dark(#d32f2f, #f44336);
 }
-[dir="rtl"] .messages--error {
-  border-color: #f9c9bf transparent #f9c9bf #f9c9bf;
-  box-shadow: 8px 0 0 #e62600;
+
+.messages__content {
+  flex: 1;
+  color: light-dark(#333, #eee);
 }
-.messages--error p.error {
-  color: #a51b00;
+
+/* Hide the legacy background icons since we have a clean accent bar */
+.messages {
+  background-image: none !important;
 }

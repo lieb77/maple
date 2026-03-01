@@ -1,0 +1,58 @@
+{#  Theme implementation to display a webmention comment #}
+
+{%
+  set classes = [
+    'webmention',
+    'webmention--' ~ property|clean_class,
+  ]
+%}
+  
+{% if "mastodon" in source %}
+   {% set icon = "fa-brands fa-mastodon" %}
+{% elseif "bsky" in source %}
+  	{% set icon = "fa-brands fa-bluesky" %}
+{% endif %}
+  
+
+
+
+
+<div{{ attributes.addClass(classes) }}>
+
+    {% if show_summary %}
+		<span class="summary">
+			
+			{% if show_avatar %}
+			<img src="{{ author_photo }}" width="40" title="{{ author_name }}" />
+			{% endif %}
+			
+			{{ interaction }} 
+			<a href="{{ source }}" class="u-url">{{ author_name }}</a>
+			
+			{% if show_created %}
+			{% trans %}on{% endtrans %}  {{ created }} <i class="{{ icon }}"></i> 
+			{% endif %}		
+		</span>
+		
+		{% if property == "in-reply-to" %}
+			<div class="comment">
+				<p>{{ content_text }}</p>
+			</div>
+		{% endif %}
+
+    {% endif %}
+
+    {% if content %}
+
+      <div class="webmention-content">
+
+        {% if show_photo and photo %}
+            <div class="photo"><img src="{{ photo }}" /></div>
+        {% endif %}
+
+        {{ content }}
+      </div>
+
+    {% endif %}
+
+</div>

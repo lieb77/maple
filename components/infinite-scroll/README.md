@@ -6,7 +6,7 @@ This component creates an infinite scroll using htmx, that replaces the pager in
 
 ```
 	{% if pager %}	
-		{{ include('spruce:infinite-scroll', {
+		{{ include('maple:infinite-scroll', {
 			id: view_id,
 			content: rows_content,
 			pager: pager,

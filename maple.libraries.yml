@@ -11,16 +11,31 @@ bootstrap:
   js:
     /libraries/bootstrap/dist/js/bootstrap.bundle.min.js: { minified: true }
 
+fontawesome_brands:
+  remote: https://fontawesome.com/
+  version: 7.0.1
+  license:
+    name: MIT
+    url: https://fontawesome.com/license/free
+    gpl-compatible: true
+  css:
+    theme:
+      # FontAwesome 7 core
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css: { type: external, minified: true }
+      # Solid icons (for fa-link)
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/solid.min.css: { type: external, minified: true }
+      # Brand icons (for Bluesky, etc)
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css: { type: external, minified: true }
+
 global-styling:
   css:
     theme:
       css/layout.css: {}
       css/colors.css: {}
       css/styles.css: {}
+      css/table.css: {}
     component:
       css/components/action-links.css:
-        weight: -10
-      css/components/breadcrumb.css:
         weight: -10
       css/components/button.css:
         weight: -10

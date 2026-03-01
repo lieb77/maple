@@ -1,0 +1,45 @@
+/* css/components/table.css */
+
+table {
+
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  /* Use the global border variable */
+  border: 1px solid var(--maple-border-medium);
+}
+
+/* Header Styling - Using your brand link color as the top "accent" */
+th {
+  background-color: var(--maple-surface);
+  border-bottom: 2px solid var(--maple-link); 
+  color: light-dark(#111, #eee);
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+/* Standard Cells */
+td, th {
+  padding: 12px 15px;
+  /* Consistent theme borders */
+  border: 1px solid var(--maple-border-medium);
+  color: inherit;
+}
+
+/* Remove all row backgrounds and striping */
+tbody tr {
+  background-color: transparent;
+}
+
+
+.monthly-stats th {
+    width: 10rem;
+}
+
+
+/* Responsive Table Priority - (Kept for functionality) */
+@media screen and (max-width: 37.5rem) {
+  .priority-low, .priority-medium { display: none; }
+}

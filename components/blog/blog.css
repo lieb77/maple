@@ -1,80 +1,145 @@
-[data-component-id="spruce:blog"] {
-}	
-	
-.blog {
-  background-color: #f7f7f7;
-  border-radius: 0.5rem;     
-  padding: 1.5rem;           
-  margin: 1rem;              
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
-              0 8px 10px -6px rgb(0 0 0 / 0.1);
+/* maple:blog component styles */
 
+.blog {
+  background-color: var(--maple-surface);
+  border: 1px solid var(--maple-border-subtle);
+  box-shadow: var(--maple-shadow-md);
+  
+  border-radius: 0.75rem;     
+  padding: 1.5rem;            
+  margin: 1rem 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.blog:hover {
+  background-color: var(--maple-surface-hover);
+  border-color: var(--maple-border-medium);
 }
 
 .blog-body {
-  margin-top: 1.5rem;          
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1rem;       
-  line-height: 2;          
+ 
 }
 
 .blog-tags {
-    border-top: 1px solid #444;
-	display: flex;        
-	align-items: baseline;
-	padding-top: .4em;
+  /* Use color-mix for the border so it's never too harsh */
+  border-top: 1px solid color-mix(in srgb, currentColor, transparent 85%);
+  display: flex;        
+  align-items: baseline;
+  padding-top: 0.75rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-body); /* Inter for tags */
+  font-size: 0.85rem;
+  color: light-dark(#666, #aaa);
 }
 
 .blog-tags span {
   display: inline-block;
   padding-right: 1em;
+  font-weight: 600;
+ /* text-transform: uppercase; */
+  letter-spacing: 0.05em;
 }
 
+/* Permalink / Copy UI */
 .permalink {
-	padding-left: 2em;
-    position: relative;
-    display: inline-block;
+  padding-left: 2rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
 }
 
+
+.fa-link.permalink__icon {
+  font-size: 0.9rem;
+  /* Ensure it uses our brand color specifically */
+  color: inherit; 
+}
+
+/* Specific override to stop the "background-fill" on hover */
+
+.permalink__button .permalink__label,
+.permalink__button .permalink__label:hover,
+.permalink__button .permalink__label:focus {
+  background-color: transparent !important; /* Forces the background to stay clear */
+  background: none !important;
+  outline: none;
+  
+  /* Ensure the text stays Emerald/Gold */
+  color: var(--maple-link);
+  
+  /* Use our faded underline instead of a blocky background */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-underline-offset: 3px;
+}
+
+/* If the icon is also getting a weird background */
+.permalink__button:hover,
+.permalink__button:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/* Ensure the button stays the relative anchor for any nested absolute elements */
 .permalink__button {
-	border: none;
-	background: inherit;
-}
-
-
-.permalink__icon {
-	padding-right: 0 !important;
-}
-
-.permalink__label {
-	color: #0071b3;
-	text-decoration: underline;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--maple-link);
 }
 
 .permalink__toast {
+  /* Positioning */
   position: fixed;
   bottom: 2rem;
   left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: #1e293b; /* slate-800 */
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s;
+  z-index: 1000;
+  
+  /* Initial Hidden State */
   opacity: 0;
   pointer-events: none;
-  z-index: 100;
+  visibility: hidden; /* Extra layer of 'hidden' */
+  transform: translateX(-50%) translateY(20px); /* Subtle slide up instead of 100px */
+  
+  /* Visuals */
+  background: #101827; /* Dark Slate for contrast */
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  border-radius: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Animation */
+  transition: 
+    opacity 0.3s ease, 
+    transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    visibility 0.3s;
 }
 
+/* The Trigger State */
 .permalink__toast.is-visible {
-  transform: translateX(-50%) translateY(0);
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
-/* Optional icon change on success */
-.is-copied .permalink__icon {
-  filter: hue-rotate(90deg); /* Turn the link icon green-ish */
+/* Success State - When copied */
+.is-copied .fa-link.permalink__icon {
+  /* In dark mode, Gold + Green-tint looks great; in light, Emerald stays Emerald */
+  filter: hue-rotate(90deg) brightness(1.2);
+  transition: filter 0.3s ease;
 }
 
-
+.path-node .blog h2 {
+	display: none;
+}

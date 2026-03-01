@@ -1,0 +1,13 @@
+
+.webmention {
+	margin: .5em;
+	padding: .2em;
+    background-color: var(--maple-surface);
+    border-radius: 0.5rem;
+    box-shadow: var(--maple-shadow-md);
+}
+
+.webmention .comment {
+    margin-left: 3rem;
+	padding: .2em;
+}

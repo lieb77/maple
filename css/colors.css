@@ -46,6 +46,17 @@
 	--bs-primary: light-dark(var(--brand-blue), var(--brand-blue-light));
 	--bs-border-color: var(--border-color);
 
+	/* Surface System */
+	--maple-surface: light-dark(#f9f9f9, #1e2530);
+	--maple-surface-hover: light-dark(#f3f4f6, #262e3a);
+	
+	/* Border System */
+	--maple-border-subtle: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.1));
+	--maple-border-medium: light-dark(rgba(0,0,0,0.12), rgba(255,255,255,0.2));
+	
+	/* Shadow System */
+	--maple-shadow-sm: 0 1px 3px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+	--maple-shadow-md: 0 10px 15px -3px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.5));
 
 }
 
