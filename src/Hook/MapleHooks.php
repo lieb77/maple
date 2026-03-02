@@ -14,6 +14,28 @@ use Drupal\Core\Url;
  */
 class MapleHooks {
 
+	/**
+	 * Preprocess user
+	 *
+	 */
+	#[HOOK('preprocess_user')]
+	public function preprocessUser(&$variables){
+		$slinks = [];
+		$links = $variables['user']->get('field_social_links');
+		foreach ($links as $link){
+			$slinks[] = $link->getValue();
+		}
+		
+		$variables['udata'] = [
+			'name'  => $variables['user']->get('name')->value,
+			'mail'  => $variables['user']->get('mail')->value,
+			'full'  => $variables['user']->get('field_full_name')->value,
+			'about' => $variables['user']->get('field_about')->value,			
+			'pic'   => $variables['user']->get('user_picture')->referencedEntities()[0]->getFileUri(), 
+			'links' => $slinks,
+		];
+	} 
+
    /**
      *
      */
