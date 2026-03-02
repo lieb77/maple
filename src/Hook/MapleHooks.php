@@ -61,7 +61,7 @@ class MapleHooks {
 		$menu_name = $variables['menu_name'] ?? '';
 		
 		// Define the specific menus we want to style as navbar menus
-		$target_menus = ['main', 'menu-bike', 'menu-music'];
+		$target_menus = ['main', 'menu-bike', 'menu-music', 'family', 'account'];
 		
 		if (in_array($menu_name, $target_menus)) {
 		  // This allows you to use one template: menu--navbar.html.twig
