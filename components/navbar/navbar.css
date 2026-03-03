@@ -1,7 +1,32 @@
 /* Navbar CSS */
 
 
-/* Ensure the container takes up the full width of the collapse */
+/* Navbar CSS Refinements */
+
+/* 1. Sync the inner container to the rest of the site */
+.navbar-maple .container-fluid {
+  max-width: var(--site-max-width); /* Matches site-wrapper */
+  margin: 0 auto;                  /* Centers it */
+  padding: 0 var(--comp-padding);  /* Matches the "Maple Rail" alignment */
+  
+  /* Ensure the container still allows the flex behavior of its children */
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 2. Clean up the Navbar background */
+.navbar.navbar-maple {
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+/* 3. Ensure the nav container uses the full width of the 'Rail' */
 .navbar-nav-container {
   display: flex;
   flex-direction: column; /* Stack on mobile */
@@ -15,6 +40,15 @@
   }
 }
 
+
+
+
+.navbar-maple.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 500; 
+}
+
 /* Optional: Add a subtle separator or different style to the secondary menu 
    to distinguish it from the main global navigation */
 .secondary-menu-slot .nav-link {
@@ -23,22 +57,6 @@
   opacity: 0.9;
 }
 
-
-.navbar.navbar-maple {
-	background-color: var(--nav-bg);
-	color: var(--nav-text);
-	border-bottom: 1px solid var(--border-color);
-	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-	transition: all 0.3s ease;
-	padding: 0;
-  
-}
-
-.navbar-maple.sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 500; 
-}
 
 body.toolbar-horizontal.toolbar-tray-open .navbar-maple.sticky-top {
   top: 79px;

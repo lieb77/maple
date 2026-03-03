@@ -20,7 +20,7 @@
 	
 	border: 2px solid var(--breadcrumb-border);
 	border-radius: 0.5rem;
-	margin: 1rem .5rem; 
+	margin: 1rem 0; 
 }
 
 .maple-breadcrumb .breadcrumb {

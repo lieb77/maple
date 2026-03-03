@@ -4,53 +4,79 @@
  */
 
 :root {
-	--sidebar-width: 3;
-	--grid-gutter: clamp(1rem, 2.5vw, 3rem);
-	--site-max-width: clamp(1320px, 90vw, 1800px);
+  --sidebar-width: 3;
+  --grid-gutter: clamp(1rem, 2.5vw, 3rem);
+  /* REinement: Allow 100% width on small screens, only clamp on desktop */
+  --site-max-width: 1800px; 
+  --comp-padding: 1rem; 
 }
 
+/* The "Outer Hull" of the site */
+.site-wrapper {
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  
+  /* This creates a global horizontal safety buffer */
+  /* Using 0 for top/bottom, and our sync variable for left/right */
+  padding: 0 var(--comp-padding); 
+}
+
+/* Now, we need to relax the .main-layout a bit so it doesn't "double up" on the padding */
 .main-layout {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	gap: var(--grid-gutter);
-	width: 100%;
-	max-width: var(--site-max-width);
-	margin: 0 auto;
-	padding: 0 calc(var(--grid-gutter) * 0.5);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gutter);
+  width: 100%;
+  /* Remove max-width/margin here since site-wrapper handles it */
+  max-width: none; 
+  margin: 0; 
+  padding: 0; 
 }
 
 /* --- 1. MOBILE DEFAULT (up to 767px) --- */
 .main-content,
 .sidebar-first,
 .sidebar-second {
-	grid-column: 1 / span 12;
+  grid-column: 1 / span 12;
 }
 
 .main-content {
-	margin: 1rem; /* Smaller margin on mobile */
-	padding: 1rem; /* Tight padding */
-	display: block; /* Usually stick to a simple stack on mobile */
+  margin: 1rem 0; 
+  padding: 0;  
+  display: block; 
+}
+
+/* Ensure the SDC cards (Blog, Bike Ride) inside the main content look good */
+.main-content > * {
+  width: 100%;
 }
 
 
 /* --- 2. TABLET (768px to 991px) --- */
 @media (min-width: 768px) {
-	/* On tablets, let's keep it simple: 
-	Sidebar First (4 cols) | Content (8 cols)
-	Sidebar Second stacks below them. */
-	
-	.sidebar-first {
-		grid-column: span 4;
-		grid-row: 1;
-	}
-	
-	.main-layout:has(.sidebar-first) .main-content {
-		grid-column: 5 / span 8;
-	}
-	
-	.main-content {
+    /* ADDED: Scale up component padding for tablet/desktop */
+    :root {
+        --comp-padding: 1.5rem;
+    }
+
+    /* On tablets, let's keep it simple: 
+    Sidebar First (4 cols) | Content (8 cols)
+    Sidebar Second stacks below them. */
+    
+    .sidebar-first {
+        grid-column: span 4;
+        grid-row: 1;
+    }
+    
+    .main-layout:has(.sidebar-first) .main-content {
+        grid-column: 5 / span 8;
+    }
+    
+    .main-content {
         margin: 1.5rem auto;
-        padding: 2rem;
+        /* CHANGED: Replaced hardcoded 2rem with our sync variable */
+        padding: var(--comp-padding);
         display: grid;
         grid-template-columns: subgrid; /* Inherits the 12-col grid */
         gap: 1.5rem;
@@ -60,51 +86,53 @@
     .main-content > * {
         grid-column: 1 / -1;
     }
-	
-	.grid-columns-2 {
-		grid-template-columns: 1fr;
-	}
+    
+    .grid-columns-2 {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- 3. DESKTOP (992px and up) --- */
 @media (min-width: 992px) {
 
-	/* Force all primary layout elements into the first row */
-	.sidebar-first,
-	.main-content,
-	.sidebar-second {
-		grid-row: 1; 
-	}
-	
-	
-	/* Reset Sidebar First to our configurable width */
-	.sidebar-first {
-		grid-column: span var(--sidebar-width);
-	}
-	
-	/* Logic: If only Sidebar First exists */
-	.main-layout:has(.sidebar-first) .main-content {
-		grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - var(--sidebar-width));
-	}
-	
-	/* Logic: If only Sidebar Second exists */
-	.main-layout:has(.sidebar-second) .main-content {
-		grid-column: 1 / span calc(12 - var(--sidebar-width));
-	}
-	
-	/* Logic: If BOTH exist (The 3-6-3 or 2-8-2 setup) */
-	.main-layout:has(.sidebar-first):has(.sidebar-second) .main-content {
-		grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - (var(--sidebar-width) * 2));
-	}
-	
-	.sidebar-second {
-		/* Ensure this starts at the far right regardless of content */
-		grid-column: calc(13 - var(--sidebar-width)) / span var(--sidebar-width);
-	}
-	
-	.main-content {
+    /* Force all primary layout elements into the first row */
+    .sidebar-first,
+    .main-content,
+    .sidebar-second {
+        grid-row: 1; 
+    }
+    
+    /* Reset Sidebar First to our configurable width */
+    .sidebar-first {
+        grid-column: span var(--sidebar-width);
+    }
+    
+    /* Logic: If only Sidebar First exists */
+    .main-layout:has(.sidebar-first) .main-content {
+        grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - var(--sidebar-width));
+    }
+    
+    /* Logic: If only Sidebar Second exists */
+    .main-layout:has(.sidebar-second) .main-content {
+        grid-column: 1 / span calc(12 - var(--sidebar-width));
+    }
+    
+    /* Logic: If BOTH exist (The 3-6-3 or 2-8-2 setup) */
+    .main-layout:has(.sidebar-first):has(.sidebar-second) .main-content {
+        grid-column: calc(var(--sidebar-width) + 1) / span calc(12 - (var(--sidebar-width) * 2));
+    }
+    
+    .sidebar-second {
+        /* Ensure this starts at the far right regardless of content */
+        grid-column: calc(13 - var(--sidebar-width)) / span var(--sidebar-width);
+    }
+    
+    .main-content {
         margin: 2rem auto;
-        padding: 3rem; 
+        /* CHANGED: Replaced hardcoded 3rem with sync variable. 
+           If you want .main-content to have extra air on desktop, 
+           you can use calc(var(--comp-padding) * 2) here. */
+        padding: var(--comp-padding); 
         display: grid;        
         grid-template-columns: subgrid; 
         gap: var(--grid-gutter, 2rem);
@@ -112,34 +140,30 @@
     }
 
     /* Since .main-content is now a grid, its immediate children 
-       need to be told to span the whole width by default.
+        need to be told to span the whole width by default.
     */
     .main-content > * {
         grid-column: 1 / -1;
     }
     
-	
-	/* Now for the magic: Specific layouts within your text */
-	.main-content .text-split {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--grid-gutter);
-	}
-  
+    /* Now for the magic: Specific layouts within your text */
+    .main-content .text-split {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--grid-gutter);
+    }
 
-	/* Helper classes for the Body field */
-	.grid-columns-2 {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--grid-gutter);
-	}
-	
-	/* Helper classes for the Body field */
-	.grid-columns-3 {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--grid-gutter);
-	}
-	
-
+    /* Helper classes for the Body field */
+    .grid-columns-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--grid-gutter);
+    }
+    
+    /* Helper classes for the Body field */
+    .grid-columns-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--grid-gutter);
+    }
 }

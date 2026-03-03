@@ -1,23 +1,24 @@
 /* maple:blog component styles */
-
 .blog {
   background-color: var(--maple-surface);
   border: 1px solid var(--maple-border-subtle);
   box-shadow: var(--maple-shadow-md);
+  border-radius: 0.75rem;
   
-  border-radius: 0.75rem;     
-  padding: 1.5rem;            
+  /* APPLYING THE NEW VARIABLE: 
+     This now automatically switches from 1rem to 1.5rem 
+     based on the media query in layout.css */
+  padding: var(--comp-padding);
+  
+  /* Vertical margin only, since the layout handles horizontal spacing */
   margin: 1rem 0;
+  
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .blog:hover {
   background-color: var(--maple-surface-hover);
   border-color: var(--maple-border-medium);
-}
-
-.blog-body {
- 
 }
 
 .blog-tags {

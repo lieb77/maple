@@ -14,10 +14,13 @@
  */
 #}
 {% block content %}
+<div class="header-container">
   {% if site_logo %}
+  <div class="site-logo">
     <a href="{{ path('<front>') }}" rel="home" class="site-logo">
       <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" fetchpriority="high" />
     </a>
+ </div>
   {% endif %}
   {% if site_name %}
     <div class="site-name">
@@ -27,4 +30,5 @@
   {% if site_slogan %}
     <div class="site-slogan">{{ site_slogan }}</div>
   {% endif %}
+  </div>
 {% endblock %}
