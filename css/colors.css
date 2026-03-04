@@ -5,18 +5,22 @@
 :root {
 	color-scheme: light dark;
 
-	/* Light Mode: Sophisticated Teal-Emerald (#059669) */
-    /* Dark Mode: Warm Harvest Gold (#ffca28) */
-    --maple-link: light-dark(#059669, #ffca28);
-    --maple-link-hover: light-dark(#047857, #ffd54f);
-
-
 	/* Site Base */
 	--site-bg: light-dark(#ffffff, #121212);
 	--site-text: light-dark(#212529, #f8f9fa);
 	--card-bg: light-dark(#f8f9fa, #1e1e1e);
 	--border-color: light-dark(#dee2e6, #333333);
 
+
+	/* Light Mode: Sophisticated Teal-Emerald (#059669) */
+    /* Dark Mode: Warm Harvest Gold (#ffca28) */
+	/*    --maple-link: light-dark(#059669, #ffca28); */
+	/*    --maple-link-hover: light-dark(#047857, #ffd54f); */
+	--maple-link: light-dark(#059669, #eab308); 
+	--maple-link-hover: light-dark(#047857, #fbbf24);
+	--maple-heading-link: light-dark(#111827, #cbd5e1);
+	
+	
 	/* Content Differentiator */
 	/* Light: A very soft cool gray vs pure white */
 	/* Dark: A "carbon" gray (#1e1e1e) vs deep black (#121212) */
@@ -97,3 +101,19 @@ a:focus-visible {
 .link-primary {
     color: var(--maple-link) !important;
 }
+
+/* Tone down the Gold for large Heading links */
+h2 a {
+  color: var(--site-text); 
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+  border-bottom: 2px solid var(--site-text); 
+}
+
+h2 a:hover {
+  color: var(--maple-link-hover);
+  border-bottom: 2px solid var(--maple-link-hover);
+}  
+  
+  
+  

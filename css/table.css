@@ -43,3 +43,43 @@ tbody tr {
 @media screen and (max-width: 37.5rem) {
   .priority-low, .priority-medium { display: none; }
 }
+
+/* Overriding Bootstrap's .table class injected by CKEditor */
+
+/* 1. Global Reset for the .table class */
+.region-content table.table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: transparent; /* Kill the Bootstrap white/gray bg */
+  border-collapse: collapse;
+  color: var(--site-text);
+}
+
+/* 2. Dark Mode Specific Overrides */
+[data-theme="dark"] .region-content table.table {
+  --bs-table-bg: transparent; /* Reset Bootstrap 5 variables if present */
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-border-color: var(--maple-border-subtle);
+  color: var(--site-text);
+}
+
+/* 3. Cells and Headers */
+.region-content table.table th,
+.region-content table.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--maple-border-subtle);
+  background-color: transparent;
+  color: var(--site-text);
+}
+
+.region-content table.table thead th {
+  background-color: var(--maple-surface-alt);
+  color: var(--maple-gold);
+  border-bottom: 2px solid var(--maple-gold);
+  text-align: left;
+}
+
+/* 4. Striping (Optional) */
+.region-content table.table tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--site-text), transparent 96%);
+}
