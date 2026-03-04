@@ -1,9 +1,17 @@
 /* Navbar CSS */
 
+.navbar-maple {
+	/* Force Bootstrap's internal variables to use our Maple variables */
+	--bs-navbar-color: var(--nav-text);
+	--bs-navbar-hover-color: var(--nav-hover-text);
+	--bs-navbar-active-color: var(--nav-text);
+	--bs-navbar-brand-color: var(--nav-text);
+	--bs-nav-link-padding-x: 1rem;
+	--bs-nav-link-padding-y: 0.5rem;
+}
 
-/* Navbar CSS Refinements */
 
-/* 1. Sync the inner container to the rest of the site */
+
 .navbar-maple .container-fluid {
   max-width: var(--site-max-width); /* Matches site-wrapper */
   margin: 0 auto;                  /* Centers it */
@@ -16,17 +24,16 @@
   justify-content: space-between;
 }
 
-/* 2. Clean up the Navbar background */
+
 .navbar.navbar-maple {
   background-color: var(--nav-bg);
   color: var(--nav-text);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+/*  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;*/
   padding: 0;
 }
 
-/* 3. Ensure the nav container uses the full width of the 'Rail' */
 .navbar-nav-container {
   display: flex;
   flex-direction: column; /* Stack on mobile */
@@ -40,14 +47,57 @@
   }
 }
 
-
-
-
 .navbar-maple.sticky-top {
   position: sticky;
   top: 0;
   z-index: 500; 
 }
+
+/* Ensure our links take the color we want, overriding BS defaults */
+.navbar-maple .nav-link {
+  color: var(--nav-text) !important; /* The !important ensures Bootstrap's utility classes don't win */
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Tonal Hover Effect */
+.navbar-maple .nav-link:hover {
+  background-color: var(--nav-hover-bg);
+  color: var(--nav-hover-text) !important;
+}
+
+/* Underline logic remains the same */
+.navbar-maple .nav-item.active .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; /* Lift it slightly off the bottom edge */
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: var(--nav-text);
+  border-radius: 2px;
+}
+
+
+.navbar-maple .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-maple .navbar-toggler-icon {
+    /* High-contrast white SVG for dark backgrounds */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Hover state for a nice interactive feel */
+.navbar-maple .navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+  
+  
 
 /* Optional: Add a subtle separator or different style to the secondary menu 
    to distinguish it from the main global navigation */
@@ -67,35 +117,6 @@ body.toolbar-horizontal .navbar-maple.sticky-top {
 }
 
 
-.navbar-maple .nav-item {
-  color: var(--nav-text);
-}
-
-.navbar-maple .nav-item:hover,
-.navbar-maple .nav-item.active {
-    background-color: var(--nav-active-bg);
-}
-
-.navbar-maple .nav-item:hover .nav-link,
-.navbar-maple .nav-item.active .nav-link {
-    color: var(--nav-active-text);
-}
-
-/* themes/custom/maple/css/navigation.css */
-
-.navbar-maple .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.navbar-maple .navbar-toggler-icon {
-    /* High-contrast white SVG for dark backgrounds */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Hover state for a nice interactive feel */
-.navbar-maple .navbar-toggler:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
 
 /* Add a slightly transparent background when sticky for modern look */
 @supports (backdrop-filter: blur(10px)) {
@@ -104,3 +125,4 @@ body.toolbar-horizontal .navbar-maple.sticky-top {
     backdrop-filter: blur(10px);
   }
 }
+

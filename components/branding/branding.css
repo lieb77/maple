@@ -1,24 +1,102 @@
-.site-branding {
-    /* Use the variable passed from Twig, or fall back to a theme default */
-    background-image: var(--banner-img);
-    background-size: cover;
-    background-position: center;
-    color: light-dark(#ffffff, #f8f9fa); /* Contrast against likely banner images */
-    min-height: 200px;
-    margin-bottom: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+/* 1. The Full-Width Header */
+.site-header {
+  background-color: var(--maple-surface);
+  width: 100%;
+}
+
+/* 2. The Rail (The Flex Parent) */
+.branding-rail {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 1rem var(--comp-padding);
+  
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Snaps logo, name, and toggle to the bottom */
+  gap: 1.5rem;
+}
+
+/* branding.css - Theme Toggle Section */
+
+.theme-toggle {
+  /* 1. Placement & Reset */
+  margin-left: auto;
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 0;
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* 2. SVG Icon Styling */
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--nav-text);
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* 3. The Mode Swap Logic */
+/* By default, hide the moon */
+.theme-toggle .moon-icon { 
+  display: none; 
+}
+
+/* When the HTML attribute is set to dark, swap them */
+[data-theme="dark"] .theme-toggle .sun-icon { 
+  display: none; 
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon { 
+  display: block; 
 }
 
 
+/* Rest of your Logo and Name styles stay the same... */
+.site-logo img {
+  display: block;
+  max-height: 80px;
+  width: auto;
+}
+
+.site-name {
+  font-family: var(--font-header);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+}
 
 .site-name a {
-    font-size: 3rem ;
-    font-weight: 700;
-    font-family: cursive;
-    color: #fff;
-    text-decoration: none;
+	color: var(--site-text);
+	text-decoration: none;
 }
 
+.site-name a:hover {
+	color: var(--site-text);
+	text-decoration: underline;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 767px) {
+  .branding-rail {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .theme-toggle {
+    margin-left: 0;
+    order: -1; /* Puts toggle at the top on mobile */
+  }
+}

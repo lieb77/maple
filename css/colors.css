@@ -4,11 +4,6 @@
 
 :root {
 	color-scheme: light dark;
-	
-	--brand-blue: #0056b3;
-	--brand-blue-light: #337ab7;
-	--brand-blue-dark: #003d80;
-	
 
 	/* Light Mode: Sophisticated Teal-Emerald (#059669) */
     /* Dark Mode: Warm Harvest Gold (#ffca28) */
@@ -32,13 +27,14 @@
 	--content-border: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.05));
 	
 
-	/* Navbar colors - no light-dark */
-	--nav-text: #f5f5f5;
-	--nav-bg: #234e70;
-  	--nav-active-text: #ffffff;
-  	--nav-active-bg: #337ab7;
-  	--nav-hover-text: #f5f5f5;
-	--nav-hover-bg: #337ab7;
+	/* Navbar */
+	/*--nav-bg: light-dark(#ffffff, #0a1a1a);*/
+	--nav-bg: var(--site-bg);
+	--nav-text: light-dark(#2d3748, #f5f5f5);  
+	--nav-hover-bg: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06));
+	--nav-hover-text: var(--nav-text);
+	--nav-active-bg: transparent;
+	--nav-active-text: var(--nav-text);
 
 	/*  Bridge to Bootstrap variables */
 	--bs-body-bg: var(--site-bg);
@@ -47,7 +43,9 @@
 	--bs-border-color: var(--border-color);
 
 	/* Surface System */
-	--maple-surface: light-dark(#f9f9f9, #1e2530);
+/*	--maple-surface: light-dark(#f9f9f9, #1e2530);*/
+	--maple-surface: var(--site-bg);
+
 	--maple-surface-hover: light-dark(#f3f4f6, #262e3a);
 	
 	/* Border System */

@@ -60,22 +60,22 @@
 
 
 {% if page.messages %}
-		{% include 'maple:debug-dock' with {
-			content: page.messages
-		} only %}
-	{% endif %}
+	{% include 'maple:debug-dock' with {
+		content: page.messages
+	} only %}
+{% endif %}
 
+
+{% if page.header %}
     <header class="site-header" role="banner">
-	  {% include 'maple:branding' with {
-			banner_url: site_bg_url,
-			header: page.header
-		} %}
+	  {{ page.header }}
 	</header>
-		
-	{% include 'maple:navbar' with {
-	  menu: page.primary_menu,
-	  secondary: page.secondary_menu
-	} %}
+{% endif %}
+
+{% include 'maple:navbar' with {
+  	menu: page.primary_menu,
+  	secondary: page.secondary_menu
+} %}
 
 
 <div class="site-wrapper">
