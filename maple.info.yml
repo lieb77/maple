@@ -2,6 +2,11 @@ name: Maple
 type: theme
 base theme: false # Or 'stable9' if you want core's basic wrapper markup
 core_version_requirement: ^11
+
+description: 'Custom theme built with the core starterkit theme.'
+screenshot: screenshot.png
+'alt text': 'Maple theme screenshot'
+
 libraries:
   - maple/bootstrap
   - maple/global-styling
