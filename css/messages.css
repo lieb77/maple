@@ -1,0 +1,47 @@
+/* css/components/messages.css */
+
+.messages-list {
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.messages {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background-color: var(--maple-bg-surface);
+  border: 1px solid var(--maple-border-subtle);
+  /* The Maple Accent Bar */
+  border-left: 6px solid var(--maple-border-base); 
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Status: Use our brand Emerald/Gold */
+.messages--status {
+  border-left-color: var(--maple-link-base);
+}
+
+/* Warning: A warm amber that isn't too "loud" */
+.messages--warning {
+  border-left-color: light-dark(#e09600, #ffca28);
+}
+
+/* Error: A clean, crisp red */
+.messages--error {
+  border-left-color: light-dark(#d32f2f, #f44336);
+}
+
+.messages__content {
+  flex: 1;
+  color: light-dark(#333, #eee);
+}
+
+/* Hide the legacy background icons since we have a clean accent bar */
+.messages {
+  background-image: none !important;
+}

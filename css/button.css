@@ -1,0 +1,56 @@
+/**
+ * @file
+ * Visual styles for buttons.
+ */
+/* css/components/button.css */
+
+.button,
+button,
+input[type="submit"],
+input[type="button"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1.5rem; 
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid var(--maple-border-breadcrumb); 
+  border-radius: .5rem;
+
+  /* Use our brand colors */
+  background-color: var(--breadcrumb-bg);
+  color: var(--maple-link);
+}
+
+/* Hover/Active States */
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+  background-color: var(--maple-link-hover, color-mix(in srgb, var(--maple-link-base), black 15%));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--maple-link-border), transparent 70%);
+  text-decoration: underline;
+}
+
+/* Secondary/Action-Link Buttons (Ghost Style) */
+.button--secondary {
+  background-color: transparent;
+  border-color: var(--maple-border-breadcrumb);
+  color: var(--maple-link-base);
+}
+
+.button--secondary:hover {
+  background-color: var(--maple-link-base);
+  color: light-dark(#ffffff, #000000);
+}
+
+/* Search form - doesn't belong in button */
+.form-type-search input {
+	border: 2px solid var(--maple-border-breadcrumb); 
+  	border-radius: .5rem;
+  	width: 14rem;
+}
