@@ -61,6 +61,10 @@ img {
 	display: block;
 }
 
+.path-frontpage .page-title {
+	display: none;
+}
+
 .main-content {
   background-color: var(--content-bg);
   color: var(--content-text);

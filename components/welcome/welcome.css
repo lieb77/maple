@@ -1,0 +1,24 @@
+
+.welcome {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	max-width: var(--site-max-width); /* Matches site-wrapper */
+  	margin: 0 auto; 
+	background-color: var(--maple-bg-card);
+	border: 2px solid var(--maple-border-medium);
+	border-radius: 1rem;
+	padding: 2rem;
+}
+
+
+.welcome-photo img {
+	border-radius: 50%;
+	max-width: 1500px;
+}
+
+.welcome-body {
+	margin-left: 2rem;
+	font-size: 1rem;
+	max-width: 60%;
+}

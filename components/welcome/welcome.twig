@@ -1,0 +1,15 @@
+
+{% if content %}
+	<div class="welcome">
+		<div class="welcome-photo">
+			{% block photo %}
+				{{ content.field_photo }}
+			{% endblock %}
+		</div>
+		<div class="welcome-body">
+			{% block body %}
+				{{ content.body }}
+			{% endblock %}
+		</div>
+	</div>
+{% endif %}

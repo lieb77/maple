@@ -2,6 +2,7 @@
 .site-header {
   background-color: var(--maple-bg-surface);
   width: 100%;
+  margin-top: 1rem;
 }
 
 /* 2. The Rail (The Flex Parent) */
@@ -24,6 +25,7 @@
   align-self: flex-end;
   background: none;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   padding: 8px;
   line-height: 0;
@@ -33,6 +35,7 @@
 
 .theme-toggle:hover {
   transform: scale(1.1);
+  background-color: var(--maple-bg-surface-hover);
 }
 
 /* 2. SVG Icon Styling */

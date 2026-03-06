@@ -1,0 +1,12 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Welcome
+description: 'Display a welcome message'
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    created:
+      type: string
+      title: Date
