@@ -1,32 +1,3 @@
-bootstrap:
-  remote: https://github.com/twbs/bootstrap
-  version: 5.3.3
-  license:
-    name: MIT
-    url: https://github.com/twbs/bootstrap/blob/main/LICENSE
-    gpl-compatible: true
-  css:
-    theme:
-      /libraries/bootstrap/dist/css/bootstrap.min.css: { minified: true }
-  js:
-    /libraries/bootstrap/dist/js/bootstrap.bundle.min.js: { minified: true }
-
-fontawesome_brands:
-  remote: https://fontawesome.com/
-  version: 7.0.1
-  license:
-    name: MIT
-    url: https://fontawesome.com/license/free
-    gpl-compatible: true
-  css:
-    theme:
-      # FontAwesome 7 core
-      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css: { type: external, minified: true }
-      # Solid icons (for fa-link)
-      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/solid.min.css: { type: external, minified: true }
-      # Brand icons (for Bluesky, etc)
-      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css: { type: external, minified: true }
-
 global-styling:
   css:
     theme:
@@ -34,10 +5,12 @@ global-styling:
       css/colors.css: {}
       css/styles.css: {}
       css/table.css: {}
+      css/button.css: {}
+      css/messages.css: {}
+      css/tabs.css: {}
+      
     component:
       css/components/action-links.css:
-        weight: -10
-      css/components/button.css:
         weight: -10
       css/components/container-inline.css:
         weight: -10
@@ -69,10 +42,38 @@ global-styling:
         weight: -10
       css/components/tablesort.css:
         weight: -10
-      css/components/tabs.css:
-        weight: -10
       css/components/textarea.css:
         weight: -10
       css/components/ui-dialog.css:
         weight: -10
+
+
+bootstrap:
+  remote: https://github.com/twbs/bootstrap
+  version: 5.3.3
+  license:
+    name: MIT
+    url: https://github.com/twbs/bootstrap/blob/main/LICENSE
+    gpl-compatible: true
+  css:
+    theme:
+      /libraries/bootstrap/dist/css/bootstrap.min.css: { minified: true }
+  js:
+    /libraries/bootstrap/dist/js/bootstrap.bundle.min.js: { minified: true }
+
+fontawesome_brands:
+  remote: https://fontawesome.com/
+  version: 7.0.1
+  license:
+    name: MIT
+    url: https://fontawesome.com/license/free
+    gpl-compatible: true
+  css:
+    theme:
+      # FontAwesome 7 core
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css: { type: external, minified: true }
+      # Solid icons (for fa-link)
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/solid.min.css: { type: external, minified: true }
+      # Brand icons (for Bluesky, etc)
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css: { type: external, minified: true }
 

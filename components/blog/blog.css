@@ -1,6 +1,6 @@
 /* maple:blog component styles */
 .blog {
-  background-color: var(--maple-surface);
+  background-color: var(--maple-bg-surface);
   border: 1px solid var(--maple-border-subtle);
   box-shadow: var(--maple-shadow-md);
   border-radius: 0.75rem;
@@ -17,7 +17,7 @@
 }
 
 .blog:hover {
-  background-color: var(--maple-surface-hover);
+  background-color: var(--maple-bg-surface-hover);
   border-color: var(--maple-border-medium);
 }
 

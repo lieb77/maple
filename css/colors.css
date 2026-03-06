@@ -5,62 +5,55 @@
 :root {
 	color-scheme: light dark;
 
-	/* Site Base */
-	--site-bg: light-dark(#ffffff, #121212);
-	--site-text: light-dark(#212529, #f8f9fa);
-	--card-bg: light-dark(#f8f9fa, #1e1e1e);
-	--border-color: light-dark(#dee2e6, #333333);
+	/* --- Background / Surface System --- */
+	--maple-bg-site: light-dark(#ffffff, #121212);
+	--maple-bg-card: light-dark(#f8f9fa, #1e1e1e);
+	--maple-bg-content: light-dark(#f9f9fb, #1e1e1e);
+	--maple-bg-nav: var(--maple-bg-site);
+	--maple-bg-nav-hover: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06));
+	--maple-bg-nav-active: transparent;
+	--maple-bg-breadcrumb: light-dark(#f0f2f5, rgba(255, 255, 255, 0.1));
+	--maple-bg-surface: var(--maple-bg-site);
+	--maple-bg-surface-hover: light-dark(#f3f4f6, #262e3a);
+	--maple-bg-blockquote: light-dark(#f9f9f9, #1a1a1a);
 
+	/* --- Text System --- */
+	--maple-text-site: light-dark(#212529, #f8f9fa);
+	--maple-text-content: light-dark(#1a1d21, #ffffff);
+	--maple-text-nav: light-dark(#2d3748, #f5f5f5);  
+	--maple-text-nav-hover: var(--maple-text-nav);
+	--maple-text-nav-active: var(--maple-text-nav);
+	--maple-text-breadcrumb: light-dark(#4a4a4a, #e0e0e0);
+	--maple-text-blockquote: light-dark(#4a4a4a, #d1d1d1);
 
+	/* --- Link System --- */
 	/* Light Mode: Sophisticated Teal-Emerald (#059669) */
     /* Dark Mode: Warm Harvest Gold (#ffca28) */
-	/*    --maple-link: light-dark(#059669, #ffca28); */
-	/*    --maple-link-hover: light-dark(#047857, #ffd54f); */
-	--maple-link: light-dark(#059669, #eab308); 
+	--maple-link-base: light-dark(#059669, #eab308); 
 	--maple-link-hover: light-dark(#047857, #fbbf24);
-	--maple-heading-link: light-dark(#111827, #cbd5e1);
+	--maple-link-heading: light-dark(#111827, #cbd5e1);
+	--maple-link-breadcrumb: light-dark(#0056b3, #8db5e2);
 	
-	
-	/* Content Differentiator */
-	/* Light: A very soft cool gray vs pure white */
-	/* Dark: A "carbon" gray (#1e1e1e) vs deep black (#121212) */
-	--content-bg: light-dark(#f9f9fb, #1e1e1e);
-	--content-text: light-dark(#1a1d21, #ffffff);
-	
-	/* Optional: A subtle border for the content area */
-	--content-border: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.05));
-	
-
-	/* Navbar */
-	/*--nav-bg: light-dark(#ffffff, #0a1a1a);*/
-	--nav-bg: var(--site-bg);
-	--nav-text: light-dark(#2d3748, #f5f5f5);  
-	--nav-hover-bg: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06));
-	--nav-hover-text: var(--nav-text);
-	--nav-active-bg: transparent;
-	--nav-active-text: var(--nav-text);
-
-	/*  Bridge to Bootstrap variables */
-	--bs-body-bg: var(--site-bg);
-	--bs-body-color: var(--site-text);
-	--bs-primary: light-dark(var(--brand-blue), var(--brand-blue-light));
-	--bs-border-color: var(--border-color);
-
-	/* Surface System */
-/*	--maple-surface: light-dark(#f9f9f9, #1e2530);*/
-	--maple-surface: var(--site-bg);
-
-	--maple-surface-hover: light-dark(#f3f4f6, #262e3a);
-	
-	/* Border System */
+	/* --- Border System --- */
+	--maple-border-base: light-dark(#dee2e6, #333333);
+	--maple-border-content: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.05));
+	--maple-border-breadcrumb: light-dark(var(--maple-border-base), rgba(255, 255, 255, 0.2));
 	--maple-border-subtle: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.1));
 	--maple-border-medium: light-dark(rgba(0,0,0,0.12), rgba(255,255,255,0.2));
 	
-	/* Shadow System */
+	/* --- Shadow System --- */
 	--maple-shadow-sm: 0 1px 3px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
 	--maple-shadow-md: 0 10px 15px -3px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.5));
 
+	/* --- Bootstrap Bridge --- */
+	--bs-body-bg: var(--maple-bg-site);
+	--bs-body-color: var(--maple-text-site);
+	--bs-primary: var(--maple-link-base);
+	--bs-border-color: var(--maple-border-base);
+
 }
+
+
 
 /* 5. Force a mode via data-attribute (for the Toggle Button) */
 [data-theme="light"] { color-scheme: light; }
@@ -68,13 +61,13 @@
 
 /* Global Styles */
 body {
-  background-color: var(--bs-body-bg);
-  color: var(--bs-body-color);
+  background-color: var(--maple-bg-site);
+  color: var(--maple-text-site);
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 a {
-    color: var(--maple-link);
+    color: var(--maple-link-base);
     text-decoration: underline; 
 	text-decoration-color: color-mix(in srgb, currentColor, transparent 60%);
     text-underline-offset: 3px;
@@ -92,22 +85,22 @@ a:focus {
 }
 
 a:focus-visible {
-    outline: 2px solid var(--maple-link);
+    outline: 2px solid var(--maple-link--base);
     outline-offset: 4px;
     border-radius: 2px;
 }
 
 /* Ensure Bootstrap's utility classes don't win by default */
 .link-primary {
-    color: var(--maple-link) !important;
+    color: var(--maple-link-base) !important;
 }
 
 /* Tone down the Gold for large Heading links */
 h2 a {
-  color: var(--site-text); 
+  color: var(--maple-text-site); 
   text-decoration: none;
   transition: color 0.25s ease-in-out;
-  border-bottom: 2px solid var(--site-text); 
+  border-bottom: 2px solid var(--maple-text-site); 
 }
 
 h2 a:hover {

@@ -2,10 +2,10 @@
 
 .navbar-maple {
 	/* Force Bootstrap's internal variables to use our Maple variables */
-	--bs-navbar-color: var(--nav-text);
-	--bs-navbar-hover-color: var(--nav-hover-text);
-	--bs-navbar-active-color: var(--nav-text);
-	--bs-navbar-brand-color: var(--nav-text);
+	--bs-navbar-color: var(--maple-text-nav);
+	--bs-navbar-hover-color: var(--maple-hover-nav);
+	--bs-navbar-active-color: var(--maple-text-nav);
+	--bs-navbar-brand-color: var(--maple-text-nav);
 	--bs-nav-link-padding-x: 1rem;
 	--bs-nav-link-padding-y: 0.5rem;
 }
@@ -26,9 +26,9 @@
 
 
 .navbar.navbar-maple {
-  background-color: var(--nav-bg);
-  color: var(--nav-text);
-  border-bottom: 1px solid var(--border-color);
+  background-color: var(--maple-bg-nav);
+  color: var(--maple-text-nav);
+  border-bottom: 1px solid var(--maple-border-base);
 /*  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: all 0.3s ease;*/
   padding: 0;
@@ -55,7 +55,7 @@
 
 /* Ensure our links take the color we want, overriding BS defaults */
 .navbar-maple .nav-link {
-  color: var(--nav-text) !important; /* The !important ensures Bootstrap's utility classes don't win */
+  color: var(--maple-text-nav) !important; /* The !important ensures Bootstrap's utility classes don't win */
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
   border-radius: 4px;
   transition: background-color 0.2s ease;
@@ -65,8 +65,8 @@
 
 /* Tonal Hover Effect */
 .navbar-maple .nav-link:hover {
-  background-color: var(--nav-hover-bg);
-  color: var(--nav-hover-text) !important;
+  background-color: var(--maple-bg-nav-hover);
+  color: var(--maple-hover-nav) !important;
 }
 
 /* Underline logic remains the same */
@@ -77,7 +77,7 @@
   left: 1rem;
   right: 1rem;
   height: 2px;
-  background-color: var(--nav-text);
+  background-color: var(--maple-text-nav);
   border-radius: 2px;
 }
 

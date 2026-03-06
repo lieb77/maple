@@ -48,11 +48,11 @@ blockquote {
   font-family: var(--font-header);
   font-style: italic;
   font-size: 1.25rem;
-  border-left: 4px solid var(--maple-link); /* Our Emerald green */
+  border-left: 4px solid var(--maple-link-border); /* Our Emerald green */
   padding: 1rem 2rem;
   margin: 2rem 0;
-  color: light-dark(#4a4a4a, #d1d1d1);
-  background: light-dark(#f9f9f9, #1a1a1a);
+  color: var(--maple-text-blockquote);
+  background: var(--maple-bg-blockquote);
 }
 
 img {

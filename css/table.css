@@ -1,85 +1,82 @@
 /* css/components/table.css */
 
 table {
-
-  margin: 1.5rem 0;
-  border-collapse: collapse;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  /* Use the global border variable */
-  border: 1px solid var(--maple-border-medium);
+	margin: 1.5rem 0;
+	border-collapse: collapse;
+	font-family: var(--font-body);
+	font-size: 0.95rem;
+	/* Use the global border variable */
+	border: 1px solid var(--maple-border-medium);
 }
 
 /* Header Styling - Using your brand link color as the top "accent" */
 th {
-  background-color: var(--maple-surface);
-  border-bottom: 2px solid var(--maple-link); 
-  color: light-dark(#111, #eee);
-  font-weight: 700;
-  text-align: left;
-  padding: 12px 15px;
+	background-color: var(--maple-bg-surface);
+	border-bottom: 2px solid var(--maple-link-base); 
+	color: light-dark(#111, #eee);
+	font-weight: 700;
+	text-align: left;
+	padding: 12px 15px;
 }
 
 /* Standard Cells */
 td, th {
-  padding: 12px 15px;
-  /* Consistent theme borders */
-  border: 1px solid var(--maple-border-medium);
-  color: inherit;
+	padding: 12px 15px;
+	/* Consistent theme borders */
+	border: 1px solid var(--maple-border-medium);
+	color: inherit;
 }
 
 /* Remove all row backgrounds and striping */
 tbody tr {
-  background-color: transparent;
+	background-color: transparent;
 }
-
 
 .monthly-stats th {
     width: 10rem;
 }
 
-
 /* Responsive Table Priority - (Kept for functionality) */
 @media screen and (max-width: 37.5rem) {
-  .priority-low, .priority-medium { display: none; }
+	.priority-low, .priority-medium { display: none; }
 }
 
 /* Overriding Bootstrap's .table class injected by CKEditor */
 
 /* 1. Global Reset for the .table class */
 .region-content table.table {
-  width: 100%;
-  margin-bottom: 1.5rem;
-  background-color: transparent; /* Kill the Bootstrap white/gray bg */
-  border-collapse: collapse;
-  color: var(--site-text);
+	width: 100%;
+	margin-bottom: 1.5rem;
+	background-color: transparent; /* Kill the Bootstrap white/gray bg */
+	border-collapse: collapse;
+	color: var(--site-text);
 }
 
 /* 2. Dark Mode Specific Overrides */
 [data-theme="dark"] .region-content table.table {
-  --bs-table-bg: transparent; /* Reset Bootstrap 5 variables if present */
-  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
-  --bs-table-border-color: var(--maple-border-subtle);
-  color: var(--site-text);
+	--bs-table-bg: transparent; /* Reset Bootstrap 5 variables if present */
+	--bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+	--bs-table-border-color: var(--maple-border-subtle);
+	color: var(--site-text);
 }
 
 /* 3. Cells and Headers */
 .region-content table.table th,
 .region-content table.table td {
-  padding: 1rem;
-  border-bottom: 1px solid var(--maple-border-subtle);
-  background-color: transparent;
-  color: var(--site-text);
+	padding: 1rem;
+	border-bottom: 1px solid var(--maple-border-subtle);
+	background-color: transparent;
+	color: var(--maple-text-site);
 }
 
 .region-content table.table thead th {
-  background-color: var(--maple-surface-alt);
-  color: var(--maple-gold);
-  border-bottom: 2px solid var(--maple-gold);
-  text-align: left;
+	background-color: var(--maple-bg-surface-hover); 
+	color: var(--maple-link-base);
+	border-bottom: 2px solid var(--maple-link-base);
+	text-align: left;
 }
 
 /* 4. Striping (Optional) */
 .region-content table.table tr:nth-child(even) {
-  background-color: color-mix(in srgb, var(--site-text), transparent 96%);
+	background-color: color-mix(in srgb, var(--maple-text-site), transparent 96%);
 }

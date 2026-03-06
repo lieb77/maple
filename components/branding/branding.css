@@ -1,6 +1,6 @@
 /* 1. The Full-Width Header */
 .site-header {
-  background-color: var(--maple-surface);
+  background-color: var(--maple-bg-surface);
   width: 100%;
 }
 

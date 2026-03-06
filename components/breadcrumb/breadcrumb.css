@@ -1,16 +1,10 @@
 /* themes/custom/maple/components/breadcrumb/breadcrumb.css */
 
 .maple-breadcrumb {
-  color-scheme: light dark;
-
-  --breadcrumb-bg: light-dark(#f0f2f5, rgba(255, 255, 255, 0.1));
-  --breadcrumb-text: light-dark(#4a4a4a, #e0e0e0);
-  --breadcrumb-link: light-dark(#0056b3, #8db5e2);
-  --breadcrumb-border: light-dark(var(--border-color), rgba(255, 255, 255, 0.2));
-  
-  background-color: var(--breadcrumb-bg);
-  color: var(--breadcrumb-text);
-  border: 2px solid var(--breadcrumb-border);
+   
+	background-color: var(--maple-bg-breadcrumb);
+	color: var(--maple-text-breadcrumb);
+	border: 2px solid var(--maple-border-breadcrumb);
   
 	/* Layout */
 	display: inline-block;    /* Or use 'width: fit-content' */
@@ -18,39 +12,39 @@
 	max-width: 100%;          /* Prevents overflow on tiny mobile screens */	
 	padding: .2rem 1.25rem;   /* Top/Bottom .2rem, Left/Right 1.25rem */
 	
-	border: 2px solid var(--breadcrumb-border);
+	border: 2px solid var(--maple-border-breadcrumb);
 	border-radius: 0.5rem;
 	margin: 1rem 0; 
 }
 
 .maple-breadcrumb .breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.9rem;
-  align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 0.9rem;
+	align-items: center;
 }
 
 .maple-breadcrumb .breadcrumb-item a {
-  color: var(--breadcrumb-link);
-  text-decoration: none;
+	color: var(--maple-link-base);
+	text-decoration: none;
 }
 
 .maple-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-  content: "\2190";
-  padding: 0 .5rem 0 .2rem;
-  color: var(--breadcrumb-text);
-  vertical-align: middle;
-  font-family: Arial, sans-serif;
+	content: "\2190";
+	padding: 0 .5rem 0 .2rem;
+	color: var(--maple-text-breadcrumb);
+	vertical-align: middle;
+	font-family: Arial, sans-serif;
 }
 
 .maple-breadcrumb .breadcrumb-item a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .maple-breadcrumb .breadcrumb-item.active {
-  color: var(--breadcrumb-text);
-  font-weight: 500;
+	color: var(--maple-text-breadcrumb);
+	font-weight: 500;
 }

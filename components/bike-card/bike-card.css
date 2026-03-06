@@ -126,11 +126,11 @@
 /* 3. The Functional Toggle (Active State) */
 /* This matches your original logic exactly but swaps the color */
 .bike-card .map-toggle-checkbox:checked ~ .bike-image-container .map-toggle-btn {
-  background-color: var(--maple-link); /* Emerald in Light, Gold in Dark */
+  background-color: var(--maple-link-base); /* Emerald in Light, Gold in Dark */
   filter: brightness(1.2);
   color: light-dark(#ffffff, #000000); /* White text on Emerald, Black text on Gold */
   transform: scale(1.1);
-  box-shadow: 0 0 12px var(--maple-link); /* Optional "glow" in the brand color */
+  box-shadow: 0 0 12px var(--maple-link-base); /* Optional "glow" in the brand color */
 }
 /* Ensure the hover doesn't get too washed out */
 .bike-card .map-toggle-checkbox:checked ~ .bike-image-container .map-toggle-btn:hover {
