@@ -1,73 +1,32 @@
-/**
- * @file
- * Theme toggle logic for Maple theme.
- */
-
 (function (Drupal) {
   Drupal.behaviors.mapleThemeToggle = {
     attach: function (context) {
-      // 1. Find the toggle button within the current context
-      // 'once' ensures we don't attach the click listener multiple times
       const toggle = context.querySelector('#theme-toggle');
-      
-      if (!toggle || toggle.dataset.themeInit) {
-        return;
-      }
-
-      // Mark as initialized
+      if (!toggle || toggle.dataset.themeInit) return;
       toggle.dataset.themeInit = true;
 
-      // 2. Logic to set the theme
-      const applyTheme = (theme) => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme-preference', theme);
-      };
-
-      // 3. Handle click events
-      toggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        applyTheme(newTheme);
-      });
-
-      // 4. Initial Load: Check for saved preference or system setting
+      // 1. On Load: Only apply the attribute if the user HAS a saved preference.
+      // If savedTheme is null, we do NOT set data-theme at all.
       const savedTheme = localStorage.getItem('theme-preference');
       if (savedTheme) {
-        applyTheme(savedTheme);
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        applyTheme('dark');
+        document.documentElement.setAttribute('data-theme', savedTheme);
       }
+
+      toggle.addEventListener('click', () => {
+        const currentAttr = document.documentElement.getAttribute('data-theme');
+        let newTheme;
+
+        if (!currentAttr) {
+          // If in "Auto" mode, flip to the opposite of the current system state
+          const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          newTheme = isSystemDark ? 'light' : 'dark';
+        } else {
+          newTheme = currentAttr === 'light' ? 'dark' : 'light';
+        }
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme-preference', newTheme);
+      });
     }
   };
 })(Drupal);
-
-
-/*
-const storageKey = 'theme-preference';
-
-const getColorPreference = () => {
-  if (localStorage.getItem(storageKey)) return localStorage.getItem(storageKey);
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-};
-
-const setPreference = () => {
-  localStorage.setItem(storageKey, theme.value);
-  reflectPreference();
-};
-
-const reflectPreference = () => {
-  document.documentElement.setAttribute('data-theme', theme.value);
-};
-
-const theme = { value: getColorPreference() };
-
-reflectPreference();
-
-window.onload = () => {
-  reflectPreference();
-  document.querySelector('#theme-toggle').addEventListener('click', () => {
-    theme.value = theme.value === 'light' ? 'dark' : 'light';
-    setPreference();
-  });
-};
-*/

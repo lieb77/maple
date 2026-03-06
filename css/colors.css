@@ -54,7 +54,6 @@
 }
 
 
-
 /* 5. Force a mode via data-attribute (for the Toggle Button) */
 [data-theme="light"] { color-scheme: light; }
 [data-theme="dark"] { color-scheme: dark; }
