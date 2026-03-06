@@ -39,7 +39,7 @@
 .theme-toggle svg {
   width: 24px;
   height: 24px;
-  stroke: var(--nav-text);
+  stroke: var(--maple-text-nav);
   stroke-width: 2.2px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -78,12 +78,12 @@
 }
 
 .site-name a {
-	color: var(--site-text);
+	color: var(--maple-text-site);
 	text-decoration: none;
 }
 
 .site-name a:hover {
-	color: var(--site-text);
+	color: var(--maple-text-site);
 	text-decoration: underline;
 }
 
