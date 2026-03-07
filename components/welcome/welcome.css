@@ -4,7 +4,7 @@
 	flex-direction: row;
 	align-items: center;
 	max-width: var(--site-max-width); /* Matches site-wrapper */
-  	margin: 0 auto; 
+  	margin: 0 auto 1em auto; 
 	background-color: var(--maple-bg-card);
 	border: 2px solid var(--maple-border-medium);
 	border-radius: 1rem;

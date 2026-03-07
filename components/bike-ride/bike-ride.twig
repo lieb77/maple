@@ -4,7 +4,8 @@
 {% set longDate = node.created.value|date('l, F j, Y - H:i') %}		
 
 <article class="h-entry bike-ride">
-    <h2 class="p-name"><a href={{ url }}>{{ ride.title }}</a></h2>
+    <h2 class="p-name dist-only">Lieb's Ride Log</h2>
+    <h3 class="p-name"><a href={{ url }}>{{ ride.title }}</a></h3>
     
 		<div class="node__meta visually-hidden">
 			{% include 'maple:submitted-meta' with {
@@ -49,6 +50,7 @@
 		
 		<div class="u-photo ride-photos">{{ content.field_photos }}</div>
     </div>
+   <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
 </article>
 
 

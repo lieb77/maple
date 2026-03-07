@@ -44,3 +44,8 @@
   display: flex;
   align-items: baseline;
 }
+
+.path-bike .dist-only,
+.path-node .dist-only {
+	display: none;
+}

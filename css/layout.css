@@ -74,7 +74,7 @@
     }
     
     .main-content {
-        margin: 1.5rem auto;
+        margin: 1rem auto;
         /* CHANGED: Replaced hardcoded 2rem with our sync variable */
         padding: var(--comp-padding);
         display: grid;
@@ -128,7 +128,7 @@
     }
     
     .main-content {
-        margin: 2rem auto;
+        margin: 1rem auto;
         /* CHANGED: Replaced hardcoded 3rem with sync variable. 
            If you want .main-content to have extra air on desktop, 
            you can use calc(var(--comp-padding) * 2) here. */
