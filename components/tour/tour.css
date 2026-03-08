@@ -3,15 +3,24 @@
 	margin-bottom: 1.5rem;	
 	position: relative;	
 	width: 100%;
-	border: 1px solid #aaa;
+	border: 1px solid var(--maple-border-content);
 	border-radius: 8px;
 	padding: 1em;
+	background-color: var(--maple-bg-card);
+	min-height: 400px;
+	box-shadow: var(--maple-shadow-sm);
 }
 
 .tour-body {
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* Creates two equal-width columns */
-  gap: 1em;
+ 
+}
+
+.tour-data a {
+	color: var(--maple-link-base);
+}
+
+.tour-data a:hover {
+	color: var(--maple-link-hover);
 }
 
 .tour-data p {
