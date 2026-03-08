@@ -21,7 +21,7 @@ th {
 
 /* Standard Cells */
 td, th {
-	padding: 12px 15px;
+	padding: 6px 15px;
 	/* Consistent theme borders */
 	border: 1px solid var(--maple-border-medium);
 	color: inherit;
@@ -43,7 +43,6 @@ tbody tr {
 
 /* Overriding Bootstrap's .table class injected by CKEditor */
 
-/* 1. Global Reset for the .table class */
 .region-content table.table {
 	width: 100%;
 	margin-bottom: 1.5rem;
@@ -52,7 +51,6 @@ tbody tr {
 	color: var(--site-text);
 }
 
-/* 2. Dark Mode Specific Overrides */
 [data-theme="dark"] .region-content table.table {
 	--bs-table-bg: transparent; /* Reset Bootstrap 5 variables if present */
 	--bs-table-striped-bg: rgba(255, 255, 255, 0.05);
@@ -60,7 +58,6 @@ tbody tr {
 	color: var(--site-text);
 }
 
-/* 3. Cells and Headers */
 .region-content table.table th,
 .region-content table.table td {
 	padding: 1rem;
@@ -76,7 +73,6 @@ tbody tr {
 	text-align: left;
 }
 
-/* 4. Striping (Optional) */
 .region-content table.table tr:nth-child(even) {
 	background-color: color-mix(in srgb, var(--maple-text-site), transparent 96%);
 }
