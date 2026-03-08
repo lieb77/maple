@@ -15,11 +15,22 @@
 
 .welcome-photo img {
 	border-radius: 50%;
-	max-width: 1500px;
+	max-width: 150px;
 }
 
 .welcome-body {
 	margin-left: 2rem;
 	font-size: 1rem;
 	max-width: 60%;
+}
+@media (orientation: portrait) {
+	.welcome {
+		flex-direction: column;
+		padding: .5rem;
+	}
+	
+	.welcome-body {
+		max-width: 100%;
+		margin-left: 0;
+	}
 }
