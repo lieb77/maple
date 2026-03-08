@@ -50,6 +50,9 @@
 	--bs-body-color: var(--maple-text-site);
 	--bs-primary: var(--maple-link-base);
 	--bs-border-color: var(--maple-border-base);
+	--bs-secondary-color: var(--maple-text-content);
+	--bs-link-color: var(--maple-link-base);
+	--bs-link-hover-color: var(--maple-link-hover);
 
 }
 

@@ -6,7 +6,6 @@
 :root {
   --sidebar-width: 3;
   --grid-gutter: clamp(1rem, 2.5vw, 3rem);
-  /* REinement: Allow 100% width on small screens, only clamp on desktop */
   --site-max-width: 1800px; 
   --comp-padding: 1rem; 
 }
@@ -16,19 +15,14 @@
   width: 100%;
   max-width: var(--site-max-width);
   margin: 0 auto;
-  
-  /* This creates a global horizontal safety buffer */
-  /* Using 0 for top/bottom, and our sync variable for left/right */
   padding: 0 var(--comp-padding); 
 }
 
-/* Now, we need to relax the .main-layout a bit so it doesn't "double up" on the padding */
 .main-layout {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--grid-gutter);
   width: 100%;
-  /* Remove max-width/margin here since site-wrapper handles it */
   max-width: none; 
   margin: 0; 
   padding: 0; 
@@ -129,9 +123,6 @@
     
     .main-content {
         margin: 1rem auto;
-        /* CHANGED: Replaced hardcoded 3rem with sync variable. 
-           If you want .main-content to have extra air on desktop, 
-           you can use calc(var(--comp-padding) * 2) here. */
         padding: var(--comp-padding); 
         display: grid;        
         grid-template-columns: subgrid; 

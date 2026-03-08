@@ -24,10 +24,10 @@
 /* Desktop: 8/4 split */
 @media (min-width: 48rem) {
   .ride-stats {
-    grid-column: span 8;
+    grid-column: span 6;
   }
   .ride-photos {
-    grid-column: span 4;
+    grid-column: span 6;
   }
 }
 

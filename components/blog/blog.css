@@ -2,12 +2,8 @@
 .blog {
   background-color: var(--maple-bg-surface);
   border: 1px solid var(--maple-border-subtle);
-  box-shadow: var(--maple-shadow-md);
+  box-shadow: var(--maple-shadow-sm);
   border-radius: 0.75rem;
-  
-  /* APPLYING THE NEW VARIABLE: 
-     This now automatically switches from 1rem to 1.5rem 
-     based on the media query in layout.css */
   padding: var(--comp-padding);
   
   /* Vertical margin only, since the layout handles horizontal spacing */

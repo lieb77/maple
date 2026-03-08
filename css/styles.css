@@ -76,9 +76,7 @@ img {
 
 
 .reading-focus {
-  /* Set a comfortable max-width for long-form reading */
   max-width: 85ch; 
-  /* Center the column so the "void" is balanced on both sides */
   margin-left: auto;
   margin-right: auto;
 }
