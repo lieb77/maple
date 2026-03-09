@@ -5,8 +5,8 @@
 {% set baseUrl = url('<front>')|render  %}
 
 <article class="h-entry bike-ride">
-    <h2 class="dist-only">Lieb's Ride Log</h2>
-    <h3><a href={{ url }}>{{ ride.title }}</a></h3>
+    <h2 class="visually-hidden">Lieb's Ride Log</h2>
+    <h3><a class="u-url" href={{ url }}>{{ ride.title }}</a></h3>
     
 	<div class="node__meta visually-hidden">
 		{% include 'maple:submitted-meta' with {
@@ -50,9 +50,9 @@
 		
 		<div class="u-photo ride-photos">{{ content.field_photos }}</div>
 		{# Hard coding tags for now #}
-		<p hidden="from-humans">Tags: #BikeTooter, #Cycling, #Bicycle</p>
+		<p class="visually-hidden">Tags: #BikeTooter, #Cycling, #Bicycle</p>
     </div>
-   <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
+   <a class="u-bridgy-fed visually-hidden" href="https://fed.brid.gy/" ></a>
 </article>
 
 
