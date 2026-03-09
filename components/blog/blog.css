@@ -5,10 +5,7 @@
   box-shadow: var(--maple-shadow-sm);
   border-radius: 0.75rem;
   padding: var(--comp-padding);
-  
-  /* Vertical margin only, since the layout handles horizontal spacing */
   margin: 1rem 0;
-  
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -17,8 +14,12 @@
   border-color: var(--maple-border-medium);
 }
 
+.blog-meta {
+	margin-bottom: 1rem;
+}
+
+
 .blog-tags {
-  /* Use color-mix for the border so it's never too harsh */
   border-top: 1px solid color-mix(in srgb, currentColor, transparent 85%);
   display: flex;        
   align-items: baseline;
@@ -33,17 +34,15 @@
   display: inline-block;
   padding-right: 1em;
   font-weight: 600;
- /* text-transform: uppercase; */
   letter-spacing: 0.05em;
 }
 
-/* Permalink / Copy UI */
 .permalink {
   padding-left: 2rem;
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem; /* Space between icon and text */
+  gap: 0.5rem; 
 }
 
 
