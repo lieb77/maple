@@ -1,21 +1,21 @@
-{#    #}
-{% set author_url = url('<front>') %}
-{% set longDate = node.created.value|date('l, F j, Y - H:i') %}
+{# components/blog/blog.twig   #}
 
+{% set authorUrl = url('<front>') %}
+{% set longDate = node.created.value|date('l, F j, Y - H:i') %}
 {% set blog_url = url('<front>')|render ~ 'blog' %}
 
 <article class="blog h-entry">
 	<header>
-		<h2 class="p-name">
+		<h2>
 			<a class="u-url" href="{{ url|render|replace({'/blog': blog_url }) }}" rel="bookmark">{{ label }}</a>
 		</h2>
 
 		<div class="blog-meta">
 			{% include 'maple:submitted-meta' with {
 			  author_name: node.getOwner.getDisplayName,
-			  author_url: url('<front>'),
+			  author_url: authorUrl,
 			  iso_datetime: iso_datetime,
-			  long_date: node.created.value|date('l, F j, Y - H:i')
+			  long_date: longDate
 			} only %}			
 		</div>
 		

@@ -1,23 +1,23 @@
+{# components/bike-ride/bike-ride.twig #}
 
-
-{% set author_url = url('<front>') %}
+{% set authorUrl = url('<front>') %}
 {% set longDate = node.created.value|date('l, F j, Y - H:i') %}		
+{% set baseUrl = url('<front>')|render  %}
 
 <article class="h-entry bike-ride">
-    <h2 class="p-name dist-only">Lieb's Ride Log</h2>
-    <h3 class="p-name"><a href={{ url }}>{{ ride.title }}</a></h3>
+    <h2 class="dist-only">Lieb's Ride Log</h2>
+    <h3><a href={{ url }}>{{ ride.title }}</a></h3>
     
-		<div class="node__meta visually-hidden">
-			{% include 'maple:submitted-meta' with {
-			  author_name: node.getOwner.getDisplayName,
-			  author_url: url('<front>'),
-			  iso_datetime: iso_datetime,
-			  long_date: node.created.value|date('l, F j, Y - H:i')
-			} only %}			
-		</div>
+	<div class="node__meta visually-hidden">
+		{% include 'maple:submitted-meta' with {
+		  author_name: node.getOwner.getDisplayName,
+		  author_url: authorUrl,
+		  iso_datetime: iso_datetime,
+		  long_date: longDate
+		} only %}			
+	</div>
 
-
-    <div class="ride-body">
+    <div class="ride-body e-content">
         <div class="ride-stats">
 			<p>
 				<span class="ride-label">Date:</span> 
@@ -34,7 +34,7 @@
 			<p>
 				<span class="ride-label">Bike:</span> 
 				<span class="p-equipment h-item">
-					<a class="u-url" href="https://paullieberman.org{{ ride.bike.path}}">
+					<a class="u-url" href="{{ baseUrl ~ ride.bike.path}}">
 						{{ ride.bike.name }}
 					</a>
 				</span>
@@ -45,10 +45,12 @@
 					{{ ride.buddies }}						
 				</p>
 			{% endif %}		
-			<div class="e-content ride-text">{{ content.body }}</div>
+			<div class="ride-text">{{ content.body }}</div>
 		</div>
 		
 		<div class="u-photo ride-photos">{{ content.field_photos }}</div>
+		{# Hard coding tags for now #}
+		<p hidden="from-humans">Tags: #BikeTooter, #Cycling, #Bicycle</p>
     </div>
    <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
 </article>
