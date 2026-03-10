@@ -228,11 +228,16 @@ class MapleHooks {
 
         // Content type Blog - All view modes
 	    elseif ( $variables['node']->type->target_id == "blog" ) {
-
+			$tags = [];
 			foreach($variables['node']->field_tags as $index => $tag){
 				$tags[$index] = $tag->target_id;
 			}
-			$variables['tags'] = $tags;
+			$variables['blog'] = [
+				'title' => $variables['node']->title->value,
+				'text'  => $variables['node']->body->summary,
+				'full'  => $variables['node']->body->value,
+				'tags'  => $tags
+			];
 		}
 	}
 
