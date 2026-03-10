@@ -135,7 +135,3 @@
   filter: hue-rotate(90deg) brightness(1.2);
   transition: filter 0.3s ease;
 }
-
-.path-node .blog h2 {
-	display: none;
-}

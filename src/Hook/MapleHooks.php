@@ -228,6 +228,8 @@ class MapleHooks {
 
         // Content type Blog - All view modes
 	    elseif ( $variables['node']->type->target_id == "blog" ) {
+	    	$base_url = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+	
 			$tags = [];
 			foreach($variables['node']->field_tags as $index => $tag){
 				$tags[$index] = $tag->target_id;
@@ -236,6 +238,7 @@ class MapleHooks {
 				'title' => $variables['node']->title->value,
 				'text'  => $variables['node']->body->summary,
 				'full'  => $variables['node']->body->value,
+				'url'   => $base_url . $variables['url'],
 				'tags'  => $tags
 			];
 		}
