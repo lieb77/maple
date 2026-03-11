@@ -19,7 +19,8 @@
 }
 
 
-.blog-tags {
+.blog-tags,
+.syndication-links {
   border-top: 1px solid color-mix(in srgb, currentColor, transparent 85%);
   display: flex;        
   align-items: baseline;
@@ -30,7 +31,8 @@
   color: light-dark(#666, #aaa);
 }
 
-.blog-tags span {
+.blog-tags span,
+.syndication-links span {
   display: inline-block;
   padding-right: 1em;
   font-weight: 600;

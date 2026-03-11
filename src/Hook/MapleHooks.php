@@ -228,18 +228,38 @@ class MapleHooks {
 
         // Content type Blog - All view modes
 	    elseif ( $variables['node']->type->target_id == "blog" ) {
+	    
 	    	$base_url = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+			$node = $variables['node'];
+			
+			// See if we have any syndication links	
+			$storage = \Drupal::entityTypeManager()->getStorage('indieweb_syndication');
+			
+			$query = $storage->getQuery()
+				->accessCheck(FALSE) // REQUIRED in Drupal 11
+				->condition('entity_id', $node->id())
+				->condition('entity_type_id', 'node'); 
+				
+			$ids = $query->execute();
+			$syndications = $storage->loadMultiple($ids);
+
+			$syndication_urls = [];
+			foreach ($syndications as $syndication) {
+				$syndication_urls[] = $syndication->get('url')->value;
+			}
 	
+			// Extract the tags
 			$tags = [];
 			foreach($variables['node']->field_tags as $index => $tag){
 				$tags[$index] = $tag->target_id;
 			}
 			$variables['blog'] = [
-				'title' => $variables['node']->title->value,
-				'text'  => $variables['node']->body->summary,
-				'full'  => $variables['node']->body->value,
-				'url'   => $base_url . $variables['url'],
-				'tags'  => $tags
+				'title' 		=> $variables['node']->title->value,
+				'text'  		=> $variables['node']->body->summary,
+				'full'  		=> $variables['node']->body->value,
+				'url'   	   	=> $base_url . $variables['url'],
+				'syndications' 	=> $syndication_urls,
+				'tags'  		=> $tags
 			];
 		}
 	}

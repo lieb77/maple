@@ -38,7 +38,7 @@
 					</a>
 				</span>
 			{% endfor %}
-
+			
 			<div class="permalink">
 				<button
 					class="permalink__button u-url"
@@ -55,6 +55,20 @@
 				</button>
 			</div>
 		</div>
+		
+		{% if blog.syndications %}
+			<div class="syndication-links">
+				<span>Syndications: <span>
+				{% for url in blog.syndications %}
+					<span>
+						<a class="u-syndication" rel="syndication" target="new" href="{{ url }}">
+							{% if 'bsky.app' in url %} Posted to Bluesky {% else %} Also on the Fediverse {% endif %}
+						</a>
+					</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+			
 	</div>
 
 	<a class="u-bridgy-fed visually-hidden" href="https://fed.brid.gy/" ></a>
