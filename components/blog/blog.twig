@@ -5,7 +5,7 @@
 
 <article class="blog h-entry">
 	<header>
-		<h2 class="p-name  visually-hidden">
+		<h2 class="p-name">
 			<a class="u-url" href="{{ blog.url }}" rel="bookmark">{{ blog.title }}</a>
 		</h2>
 
@@ -15,11 +15,11 @@
 			  author_url: authorUrl,
 			  iso_datetime: iso_datetime,
 			  long_date: longDate
-			} only %}			
+			} only %}
 		</div>
-		
+
 	</header>
-	
+
 	{% if blog.text %}
 		<div class="p-summary visually-hidden">
 			{{ blog.text }}
@@ -28,7 +28,7 @@
 
 	<div class="blog-body e-content">
 		{{ content.body }}
-	
+
 		<div class="blog-tags">
 			<span>Tags: </span>
 			{% for key, tag in blog.tags %}
@@ -38,7 +38,7 @@
 					</a>
 				</span>
 			{% endfor %}
-			
+
 			<div class="permalink">
 				<button
 					class="permalink__button u-url"
@@ -47,7 +47,7 @@
 				>
 					<span class="permalink__icon"><i class="fa fa-link" aria-hidden="true"></i></span>
 					<span class="permalink__label">Permalink</span>
-		
+
 					{# This is our 'Toast' element #}
 					<div class="permalink__toast">
 						Copied to clipboard! 🚀
@@ -55,20 +55,20 @@
 				</button>
 			</div>
 		</div>
-		
+
 		{% if blog.syndications %}
 			<div class="syndication-links">
-				<span>Syndications: <span>
+				<span>Posted on: <span>
 				{% for url in blog.syndications %}
 					<span>
 						<a class="u-syndication" rel="syndication" target="new" href="{{ url }}">
-							{% if 'bsky.app' in url %} Posted to Bluesky {% else %} Also on the Fediverse {% endif %}
+							{% if 'bsky.app' in url %} Bluesky {% else %} Mastodon {% endif %}
 						</a>
 					</span>
 				{% endfor %}
 			</div>
 		{% endif %}
-			
+
 	</div>
 
 	<a class="u-bridgy-fed visually-hidden" href="https://fed.brid.gy/" ></a>
