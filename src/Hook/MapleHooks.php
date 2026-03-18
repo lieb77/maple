@@ -171,25 +171,33 @@ class MapleHooks {
 
 		//  Content type Ride - All view modes
 		elseif ($variables['node']->type->target_id == "ride"){
-			// ($variables['view_mode'] == "bike_ride "full"  "tour_ride" {
+			// ($variables['view_mode'] == "bike_ride" "full"  "tour_ride" {
+			
+			$node    = $variables['node'];
+			$nid     = $node->id();
+			$content = $variables['content'];
+
+			// See if we have any syndication links	
+			$syndication_urls =  $this->getSyndicationUrls($nid);
 
 			$variables['ride'] = [
-				'id'      => $variables['node']->id(),
-				'title'   => $variables['node']->title->value,
-				'date'    => $variables['node']->field_ridedate->value,
-				'miles'   => $variables['node']->field_miles->value,
-				'buddies' => $variables['node']->field_buddies->value,
+				'id'      => $nid,
+				'title'   => $node->title->value,
+				'date'    => $node->field_ridedate->value,
+				'miles'   => $node->field_miles->value,
+				'buddies' => $node->field_buddies->value,
 				'bike' => [
-					'name' => $variables['content']['field_bike'][0]['#plain_text'],
-					'path' => $variables['content']['field_bike'][0]['#entity']->path->alias,
+					'name' => $content['field_bike'][0]['#plain_text'],
+					'path' => $content['field_bike'][0]['#entity']->path->alias,
 				],
+				'syndications' 	=> $syndication_urls,
 			];
 
 			// For tour rides we don't use the field_photos but rather query for all potots from that day
 			if ($variables['view_mode'] == "tour_ride") {
 
 			// Query media for pictures on this date
-				$date = $variables['node']->field_ridedate->value;
+				$date = $node->field_ridedate->value;
 
 				$entity_type_manager = \Drupal::entityTypeManager();
 				$query = $entity_type_manager->getStorage('media')
@@ -233,20 +241,7 @@ class MapleHooks {
 			$node = $variables['node'];
 			
 			// See if we have any syndication links	
-			$storage = \Drupal::entityTypeManager()->getStorage('indieweb_syndication');
-			
-			$query = $storage->getQuery()
-				->accessCheck(FALSE) // REQUIRED in Drupal 11
-				->condition('entity_id', $node->id())
-				->condition('entity_type_id', 'node'); 
-				
-			$ids = $query->execute();
-			$syndications = $storage->loadMultiple($ids);
-
-			$syndication_urls = [];
-			foreach ($syndications as $syndication) {
-				$syndication_urls[] = $syndication->get('url')->value;
-			}
+			$syndication_urls = $this->getSyndicationUrls($node->id());
 	
 			// Extract the tags
 			$tags = [];
@@ -291,6 +286,31 @@ class MapleHooks {
 			  'query' => $query,
 			])->toString();
 		}
+	}
+
+	/**
+	 * Get Sysncidation URL
+	 *
+	 * @param $nid : node id
+	 *
+	 * @returns array of urls
+	 */	
+	private function getSyndicationUrls($nid) {
+		$urls = [];	
+		$storage = \Drupal::entityTypeManager()->getStorage('indieweb_syndication');
+		
+		$query = $storage->getQuery()
+			->accessCheck(FALSE) 
+			->condition('entity_id', $nid)
+			->condition('entity_type_id', 'node'); 
+			
+		$ids = $query->execute();
+		$syndications = $storage->loadMultiple($ids);
+
+		foreach ($syndications as $syndication) {
+			$urls[] = $syndication->get('url')->value;
+		}
+		return $urls;
 	}
 
 }

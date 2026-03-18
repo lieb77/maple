@@ -49,10 +49,21 @@
 		</div>
 		
 		<div class="u-photo ride-photos">{{ content.field_photos }}</div>
-		{# Hard coding tags for now #}
-		<p class="visually-hidden">Tags: #BikeTooter, #Cycling, #Bicycle</p>
     </div>
-   <a class="u-bridgy-fed visually-hidden" href="https://fed.brid.gy/" ></a>
+
+	{% if ride.syndications %}
+		<div class="syndication-links">
+			<span>Posted on: <span>
+			{% for url in ride.syndications %}
+				<span>
+					<a class="u-syndication" rel="syndication" target="new" href="{{ url }}">
+						{% if 'bsky.app' in url %} Bluesky {% else %} Mastodon {% endif %}
+					</a>
+				</span>
+			{% endfor %}
+		</div>
+	{% endif %}
+
 </article>
 
 
