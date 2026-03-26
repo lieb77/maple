@@ -19,6 +19,12 @@
     z-index: 2000;
 }
 
+
+.debug-message-dock .placeholder {
+	background-color: var(--debug-bg) !important;
+	color: var(--maple-text-site) !important;
+}
+
 /* Status Indicator Logic via :has() */
 .debug-message-dock:has(.messages--error) {
     border-bottom-color: var(--debug-error);

@@ -140,6 +140,23 @@ class MapleHooks {
 		}
 	}
 
+
+	/*
+	 * Preprocess html
+	 *
+     */
+	#[Hook('preprocess_html')]
+	public function preprocessHtml(&$variables): void {
+		if ($variables['node_type'] == 'blog'){
+		
+			$node = \Drupal::routeMatch()->getParameter('node');
+			if ($node instanceof \Drupal\node\NodeInterface) {
+				$variables['node_uuid'] = $node->uuid();
+			}
+		}
+	}
+
+
 	/*
 	 * Preprocess node
 	 *
@@ -259,8 +276,7 @@ class MapleHooks {
 		}
 	}
 
-	// Not sure where I need this but I might
-	// $source_url = $node->toUrl('canonical', ['absolute' => TRUE])->toString();
+
 
 
 	/**
