@@ -147,7 +147,7 @@ class MapleHooks {
      */
 	#[Hook('preprocess_html')]
 	public function preprocessHtml(&$variables): void {
-		if ($variables['node_type'] == 'blog'){
+		if (isset($variables['node_type']) && $variables['node_type'] == 'blog') {
 		
 			$node = \Drupal::routeMatch()->getParameter('node');
 			if ($node instanceof \Drupal\node\NodeInterface) {
