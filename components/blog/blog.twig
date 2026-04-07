@@ -62,7 +62,10 @@
 				{% for url in blog.syndications %}
 					<span>
 						<a class="u-syndication" rel="syndication" target="new" href="{{ url }}">
-							{% if 'bsky.app' in url %} Bluesky {% else %} Mastodon {% endif %}
+							{% if 'bsky.app' in url %} Bluesky 
+							{% elseif 'leaflet.pub' in url %} Leaflet
+							{% else %} Mastodon 
+							{% endif %}
 						</a>
 					</span>
 				{% endfor %}
