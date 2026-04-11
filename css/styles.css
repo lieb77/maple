@@ -89,3 +89,7 @@ img {
 .artist-page-row {
 	padding-bottom: 2rem;
 }
+
+.grid-column-2 img {
+    margin-bottom: .5rem;
+}
