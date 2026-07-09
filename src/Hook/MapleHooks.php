@@ -152,19 +152,22 @@ class MapleHooks {
 			$node = \Drupal::routeMatch()->getParameter('node');
 			if ($node instanceof \Drupal\node\NodeInterface) {
 				$variables['node_uuid'] = $node->uuid(); //This is being used as standard site Rkey, but that has changed to tid, which must be accessed elsewhere.
-				$nid = node->id();
+				$nid = $node->id();
 			}
 			// Get syndication entity
 			$storage = \Drupal::entityTypeManager()->getStorage('indieweb_syndication');
 		
 			$query = $storage->getQuery()
 				->accessCheck(FALSE) 
-				->condition('entity_id', $nid)
+				->condition('entity_id', $nid);
 			
-			$id = $query->execute();
-			$entry = $storage->load($id);
-			// Set the at_uri for the standard site link
-			$variables['at_uri'] = $entry->get('at_uri');
+			$ids = $query->execute();
+			$syndications = $storage->loadMultiple($ids);
+
+			foreach ($syndications as $syndication) {
+				$at_uri = $syndication->get('at_uri')->value;
+			}
+			$variables['at_uri'] = $at_uri;
 		}
 	}
 
